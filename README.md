@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PaycheckTaxCalc
 
-## Getting Started
+Free paycheck tax calculator for all 50 US states. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the calculator.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deployed on Vercel. Push to `main` to trigger a deploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to update tax rates
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All tax rate data is in **`/lib/taxRates.ts`**.
 
-## Deploy on Vercel
+- **Federal brackets**: Update `FEDERAL_BRACKETS` and `FEDERAL_STANDARD_DEDUCTIONS` constants.
+- **FICA wage base**: Update `SOCIAL_SECURITY_WAGE_BASE` and `ADDITIONAL_MEDICARE_THRESHOLD`.
+- **State rates**: Find the state key in `STATE_TAX_CONFIGS` (e.g., `CA`, `NY`) and update brackets/flat rate.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+After updating, run `npm run build` to verify no TypeScript errors.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## How to add affiliate links
+
+Edit **`/components/AffiliateCTA.tsx`** and replace the placeholder `href` values:
+
+```tsx
+{ href: '#affiliate-turbotax' }   // → 'https://turbotax.intuit.com/?cid=your_id'
+{ href: '#affiliate-betterment' } // → 'https://betterment.com/refer/...'
+{ href: '#affiliate-gusto' }      // → 'https://gusto.com/partner/...'
+```
+
+## How to connect email capture (ConvertKit / Mailchimp)
+
+The stub is in **`/app/api/subscribe/route.ts`**.
+
+**ConvertKit:** Set `CONVERTKIT_API_KEY` and `CONVERTKIT_FORM_ID` env vars in Vercel, then POST to:
+`https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`
+
+**Mailchimp:** Set `MAILCHIMP_API_KEY` and `MAILCHIMP_LIST_ID`, then use the Mailchimp Members API.
+
+## Project structure
+
+```
+app/
+  page.tsx                Homepage + SEO content
+  layout.tsx              Root layout, metadata, JSON-LD
+  [state]/page.tsx        51 static state pages
+  sitemap.ts              Auto-generated sitemap
+  faq/page.tsx            22 FAQ questions
+  how-it-works/page.tsx   Calculation methodology
+  privacy/page.tsx        Privacy policy
+  api/subscribe/route.ts  Email subscribe API stub
+
+components/
+  Calculator.tsx           All inputs, debounced, accessible
+  ResultCard.tsx           Per-paycheck result + share button
+  TaxBreakdownTable.tsx    Full-year itemized table
+  StateSelector.tsx        State dropdown
+  PayPeriodSelector.tsx    Pay frequency dropdown
+  FilingStatusSelector.tsx Filing status dropdown
+  AffiliateCTA.tsx         Affiliate offer cards
+  EmailCapture.tsx         Email newsletter signup
+
+lib/
+  taxRates.ts     2024 federal + all state tax rate data
+  calculateTax.ts Pure calculation functions (zero deps)
+  stateData.ts    State metadata and slug mapping
+
+public/
+  robots.txt      Search engine crawl rules
+  og-image.svg    Open Graph image
+```
