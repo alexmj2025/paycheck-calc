@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function NavHeader() {
   const [open, setOpen] = useState(false);
@@ -14,8 +15,8 @@ export default function NavHeader() {
   return (
     <header className="border-b border-gray-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="/" className="text-lg font-bold text-blue-700 no-underline">
-          PaycheckTaxCalc
+        <a href="/" className="no-underline">
+          <Image src="/logo.png" alt="PaycheckTaxCalc" width={200} height={50} className="h-10 w-auto" priority />
         </a>
 
         {/* Desktop nav */}
