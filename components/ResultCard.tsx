@@ -88,12 +88,16 @@ export default function ResultCard({ result, payFrequency, locationLabel }: Prop
           </div>
         </div>
 
-        <div
-          data-ad-slot="below-result"
-          data-ad-format="horizontal"
-          className="mt-4 min-h-[90px] w-full rounded bg-gray-100"
-          aria-hidden="true"
-        />
+        <div className="mt-4 w-full">
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-8870870806520160"
+            data-ad-slot="below-result"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        </div>
 
         <button
           onClick={handleShare}

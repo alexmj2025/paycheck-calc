@@ -152,11 +152,16 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
 
   return (
     <div className="w-full">
-      <div
-        data-ad-slot="top-banner" data-ad-format="leaderboard"
-        className="mx-auto mb-6 hidden min-h-[90px] max-w-[728px] rounded bg-gray-100 md:block"
-        aria-hidden="true"
-      />
+      <div className="mx-auto mb-6 hidden max-w-[728px] md:block">
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-8870870806520160"
+          data-ad-slot="top-banner"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
         <div className="space-y-6">
@@ -287,11 +292,16 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
 
         {/* ── Right: results ── */}
         <div className="space-y-4">
-          <div
-            data-ad-slot="sidebar" data-ad-format="rectangle"
-            className="hidden min-h-[250px] w-full rounded bg-gray-100 md:block"
-            aria-hidden="true"
-          />
+          <div className="hidden w-full md:block">
+            <ins
+              className="adsbygoogle"
+              style={{ display: 'block' }}
+              data-ad-client="ca-pub-8870870806520160"
+              data-ad-slot="sidebar"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            />
+          </div>
           {result ? (
             <>
               <ResultCard result={result} payFrequency={country === 'US' ? usInput.payFrequency : caInput.payFrequency} locationLabel={locationLabel} />
@@ -305,11 +315,16 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
         </div>
       </div>
 
-      <div
-        data-ad-slot="in-content" data-ad-format="horizontal"
-        className="mx-auto mt-8 min-h-[90px] max-w-[728px] rounded bg-gray-100"
-        aria-hidden="true"
-      />
+      <div className="mx-auto mt-8 max-w-[728px]">
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-8870870806520160"
+          data-ad-slot="in-content"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
     </div>
   );
 }

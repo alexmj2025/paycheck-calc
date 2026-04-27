@@ -47,6 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8870870806520160"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
         <NavHeader />
@@ -57,12 +62,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <footer className="mt-16 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-6xl px-4 py-8">
-            <div
-              data-ad-slot="footer"
-              data-ad-format="leaderboard"
-              className="mx-auto mb-6 min-h-[90px] max-w-[728px] rounded bg-gray-100"
-              aria-hidden="true"
-            />
+            <div className="mx-auto mb-6 max-w-[728px]">
+              <ins
+                className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-8870870806520160"
+                data-ad-slot="footer"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              />
+            </div>
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500">
               <p>© {new Date().getFullYear()} PaycheckTaxCalc. For informational purposes only.</p>
               <nav aria-label="Footer navigation">
