@@ -147,7 +147,7 @@ ${rows.map(r => `<tr><td>${r.label}</td><td class="${r.negative ? 'neg' : 'pos'}
       {/* AdSense */}
       <div className="mb-4">
         <ins className="adsbygoogle" style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160" data-ad-slot="below-result"
+          data-ad-client="ca-pub-8870870806520160" data-ad-slot="1337972327"
           data-ad-format="auto" data-full-width-responsive="true" />
       </div>
 

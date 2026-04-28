@@ -138,7 +138,7 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
     <div className="w-full">
       <div className="mx-auto mb-6 hidden max-w-[728px] md:block">
         <ins className="adsbygoogle" style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160" data-ad-slot="top-banner"
+          data-ad-client="ca-pub-8870870806520160" data-ad-slot="3621580228"
           data-ad-format="auto" data-full-width-responsive="true" />
       </div>
 
@@ -304,7 +304,7 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
 
       <div className="mx-auto mt-8 max-w-[728px]">
         <ins className="adsbygoogle" style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160" data-ad-slot="in-content"
+          data-ad-client="ca-pub-8870870806520160" data-ad-slot="7771744079"
           data-ad-format="auto" data-full-width-responsive="true" />
       </div>
     </div>

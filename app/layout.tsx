@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 className="adsbygoogle"
                 style={{ display: 'block' }}
                 data-ad-client="ca-pub-8870870806520160"
-                data-ad-slot="footer"
+                data-ad-slot="5915826217"
                 data-ad-format="auto"
                 data-full-width-responsive="true"
               />
