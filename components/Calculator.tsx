@@ -201,29 +201,17 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
                 onChange={(v) => country === 'US' ? updateUS('grossPay', v) : updateCA('grossPay', v)}
                 prefix="$" error={error}
               />
-              <div className="flex flex-col">
-                <label htmlFor="payFreq" className={labelBase}>Pay Frequency</label>
-                <PayPeriodSelector
-                  value={country === 'US' ? usInput.payFrequency : caInput.payFrequency}
-                  onChange={(v) => country === 'US' ? updateUS('payFrequency', v) : updateCA('payFrequency', v)}
-                />
-              </div>
+              <PayPeriodSelector
+                value={country === 'US' ? usInput.payFrequency : caInput.payFrequency}
+                onChange={(v) => country === 'US' ? updateUS('payFrequency', v) : updateCA('payFrequency', v)}
+              />
               {country === 'US' ? (
                 <>
-                  <div className="flex flex-col">
-                    <label className={labelBase}>Filing Status</label>
-                    <FilingStatusSelector value={usInput.filingStatus} onChange={(v) => updateUS('filingStatus', v as FilingStatus)} />
-                  </div>
-                  <div className="flex flex-col">
-                    <label className={labelBase}>State</label>
-                    <StateSelector value={usInput.state} onChange={(v) => updateUS('state', v)} />
-                  </div>
+                  <FilingStatusSelector value={usInput.filingStatus} onChange={(v) => updateUS('filingStatus', v as FilingStatus)} />
+                  <StateSelector value={usInput.state} onChange={(v) => updateUS('state', v)} />
                 </>
               ) : (
-                <div className="flex flex-col">
-                  <label className={labelBase}>Province</label>
-                  <ProvinceSelector value={caInput.province} onChange={(v) => updateCA('province', v)} />
-                </div>
+                <ProvinceSelector value={caInput.province} onChange={(v) => updateCA('province', v)} />
               )}
             </div>
 

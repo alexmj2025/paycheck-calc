@@ -57,7 +57,7 @@ export default function HomePage() {
       {/* Hero */}
       <div className="mb-10 text-center">
         <p className="phase-label text-muted mb-3">Tax Year 2026 · Updated April 2026</p>
-        <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl" style={{ color: '#1C1917' }}>
+        <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl" style={{ color: '#1C1917' }}>
           Paycheck tax<br />calculator, made plain.
         </h1>
         <p className="mt-4 mx-auto max-w-xl text-base" style={{ color: '#78716C' }}>

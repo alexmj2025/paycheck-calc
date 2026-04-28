@@ -114,29 +114,30 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        Paycheck Tax FAQ 2026
-      </h1>
-      <p className="mb-10 text-gray-600">
-        Answers to the most common questions about paycheck withholding, federal and state taxes, and how to
-        maximize your take-home pay — updated for 2026.
-      </p>
+      <div className="mb-8">
+        <p className="phase-label text-muted mb-2">Tax Year 2026</p>
+        <h1 className="text-2xl font-bold leading-tight sm:text-3xl mb-3" style={{ color: '#1C1917' }}>
+          Paycheck Tax FAQ 2026
+        </h1>
+        <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>
+          Answers to the most common questions about paycheck withholding, federal and state taxes, and how to
+          maximize your take-home pay — updated for 2026.
+        </p>
+      </div>
 
-      <div className="space-y-8 max-w-3xl">
+      <div className="space-y-0 max-w-3xl overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
         {FAQS.map(({ q, a }, i) => (
-          <div key={i} className="border-b border-gray-200 pb-8 last:border-0">
-            <h2 className="text-lg font-semibold text-gray-900">{q}</h2>
-            <p className="mt-2 leading-relaxed text-gray-700">{a}</p>
+          <div key={i} className="px-6 py-5" style={{ borderBottom: '1px solid #F0EDE7' }}>
+            <h2 className="text-sm font-semibold mb-2" style={{ color: '#1C1917' }}>{q}</h2>
+            <p className="text-sm leading-relaxed" style={{ color: '#44403C' }}>{a}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-12 rounded-xl bg-blue-50 border border-blue-200 p-6">
-        <p className="text-sm text-blue-800">
-          <strong>Ready to calculate your take-home pay?</strong>{' '}
-          <a href="/" className="underline hover:text-blue-900">Use our free paycheck calculator</a> for all 50
-          US states with 2026 tax brackets.
-        </p>
+      <div className="mt-8 rounded-xl p-5 text-sm" style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6' }}>
+        <strong style={{ color: '#1C1917' }}>Ready to calculate your take-home pay?</strong>{' '}
+        <a href="/" style={{ color: '#C17F3E' }} className="underline">Use our free paycheck calculator</a> for all 50
+        US states with 2026 tax brackets.
       </div>
     </div>
   );

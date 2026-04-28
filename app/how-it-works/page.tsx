@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function HowItWorksPage() {
   return (
-    <article className="prose prose-gray max-w-3xl">
-      <h1>How Our Paycheck Tax Calculator Works</h1>
+    <article className="prose prose-gray max-w-3xl prose-headings:text-[#1C1917] prose-p:text-[#44403C]">
+      <h1 className="text-2xl sm:text-3xl">How Our Paycheck Tax Calculator Works</h1>
       <p className="lead">
         This page explains the exact calculation methodology used by PaycheckTaxCalc. All calculations are
         performed client-side in your browser — no data is sent to a server.

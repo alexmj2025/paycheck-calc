@@ -17,32 +17,31 @@ interface Props {
 
 function formatBracketTable(brackets: CABracket[], bpa: number, provinceName: string) {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border border-gray-200 text-sm">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Taxable Income</th>
-            <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Provincial Rate</th>
+    <div className="overflow-x-auto rounded-xl" style={{ border: '1px solid #E2DDD6' }}>
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr style={{ borderBottom: '1px solid #E2DDD6' }}>
+            <th className="px-4 py-3 text-left phase-label text-muted font-normal">Taxable Income</th>
+            <th className="px-4 py-3 text-left phase-label text-muted font-normal">Provincial Rate</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody>
           {brackets.map((b, i) => (
-            <tr key={i} className="even:bg-gray-50">
-              <td className="border border-gray-200 px-4 py-2">
+            <tr key={i} style={{ borderBottom: '1px solid #F0EDE7' }}>
+              <td className="px-4 py-3" style={{ color: '#44403C' }}>
                 {b.max === Infinity
                   ? `$${b.min.toLocaleString()}+`
                   : `$${b.min.toLocaleString()} – $${b.max.toLocaleString()}`}
               </td>
-              <td className="border border-gray-200 px-4 py-2 font-medium text-blue-700">
+              <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>
                 {(b.rate * 100).toFixed(4).replace(/\.?0+$/, '')}%
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="mt-2 text-sm text-gray-500">
-        {provinceName} Basic Personal Amount: ${bpa.toLocaleString()} — generates a non-refundable credit that
-        reduces your provincial tax owing.
+      <p className="px-4 pb-3 mt-1 text-xs" style={{ color: '#A8A29E' }}>
+        {provinceName} Basic Personal Amount: ${bpa.toLocaleString()} — generates a non-refundable credit.
       </p>
     </div>
   );
@@ -54,7 +53,7 @@ function getProvinceIntro(name: string, abbr: Province, config: ProvinceTaxConfi
   const lowestRate = (config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '');
 
   if (abbr === 'AB') {
-    return `Alberta is Canada's most tax-friendly province, with a 10% flat rate on income up to $148,269 and one of the highest basic personal amounts at $21,003 — meaning more income is sheltered from tax before a single dollar is collected. High earners face a top provincial rate of ${topRate}%. Combined with federal tax, CPP (5.95%), and EI (1.64%), use the calculator above to find your exact Alberta take-home pay for 2026.`;
+    return `Alberta is Canada's most tax-friendly province, with a 10% flat rate on income up to $148,269 and one of the highest basic personal amounts at $21,003 — meaning more income is sheltered from tax before a single dollar is collected. High earners face a top provincial rate of ${topRate}%. Combined with federal tax, CPP (5.95%), and EI (1.63%), use the calculator above to find your exact Alberta take-home pay for 2026.`;
   }
   if (abbr === 'QC') {
     return `Quebec has its own provincial tax system administered by Revenu Québec, with brackets ranging from 14% to 25.75%. Workers in Quebec pay QPP (Québec Pension Plan) at 6.4% instead of the federal CPP, and QPIP (Québec Parental Insurance Plan) at 0.494%, while paying a reduced EI rate of 1.30%. The provincial Basic Personal Amount is $17,183. Use the calculator above to get your exact Quebec take-home pay for 2026.`;
@@ -66,13 +65,13 @@ function getProvinceIntro(name: string, abbr: Province, config: ProvinceTaxConfi
     return `British Columbia uses a seven-bracket provincial income tax system, with rates ranging from ${lowestRate}% to ${topRate}% for the highest earners above $240,716. The provincial Basic Personal Amount is $11,981. BC is among the higher-tax provinces for top earners but competitive in the lower brackets. Combined with federal tax, CPP, and EI, use the calculator above to find your exact BC take-home pay.`;
   }
   if (abbr === 'NS') {
-    return `Nova Scotia has one of the higher top provincial tax rates in Canada at ${topRate}%, applying to income above $150,000. The provincial Basic Personal Amount is $8,481 — one of the lowest in the country, meaning less income is sheltered from tax. The lowest bracket rate is ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to find your exact Nova Scotia take-home pay for 2026.`;
+    return `Nova Scotia has one of the higher top provincial tax rates in Canada at ${topRate}%, applying to income above $150,000. The provincial Basic Personal Amount is $8,481 — one of the lowest in the country. The lowest bracket rate is ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to find your exact Nova Scotia take-home pay for 2026.`;
   }
   if (abbr === 'NL') {
     return `Newfoundland and Labrador has a seven-bracket provincial system with Canada's highest top marginal rate at ${topRate}%, applying to income above $551,739. The Basic Personal Amount is $10,818. The lowest rate starts at ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to calculate your exact Newfoundland take-home pay for 2026.`;
   }
 
-  return `${name} uses a progressive provincial income tax system with brackets starting at ${lowestRate}% and reaching ${topRate}% for the highest earners. The provincial Basic Personal Amount is $${config.basicPersonalAmount.toLocaleString()}, which generates a non-refundable tax credit reducing the tax you owe. On top of provincial tax, ${name} workers also pay federal income tax (15%–33%), CPP contributions (5.95% up to YMPE), and EI premiums (1.64% up to MIE). Pre-tax deductions such as RRSP contributions, group benefits, and pension contributions can reduce your taxable income. Use the calculator above to calculate your exact ${name} take-home pay for 2026.`;
+  return `${name} uses a progressive provincial income tax system with brackets starting at ${lowestRate}% and reaching ${topRate}% for the highest earners. The provincial Basic Personal Amount is $${config.basicPersonalAmount.toLocaleString()}, which generates a non-refundable tax credit reducing the tax you owe. On top of provincial tax, ${name} workers also pay federal income tax (15%–33%), CPP contributions (5.95% up to YMPE), and EI premiums (1.63% up to MIE). Pre-tax deductions such as RRSP contributions, group benefits, and pension contributions can reduce your taxable income. Use the calculator above to calculate your exact ${name} take-home pay for 2026.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -84,11 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: `https://paychecktaxcalc.com/canada/${provinceInfo.slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `https://paychecktaxcalc.com/canada/${provinceInfo.slug}`,
-    },
+    openGraph: { title, description, url: `https://paychecktaxcalc.com/canada/${provinceInfo.slug}` },
   };
 }
 
@@ -113,12 +108,7 @@ export default function ProvincePage({ params }: Props) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://paychecktaxcalc.com' },
       { '@type': 'ListItem', position: 2, name: 'Canada', item: 'https://paychecktaxcalc.com/canada' },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: `${provinceInfo.name} Paycheck Calculator`,
-        item: `https://paychecktaxcalc.com/canada/${provinceInfo.slug}`,
-      },
+      { '@type': 'ListItem', position: 3, name: `${provinceInfo.name} Paycheck Calculator`, item: `https://paychecktaxcalc.com/canada/${provinceInfo.slug}` },
     ],
   };
 
@@ -140,8 +130,8 @@ export default function ProvincePage({ params }: Props) {
         acceptedAnswer: {
           '@type': 'Answer',
           text: abbr === 'QC'
-            ? `Quebec workers pay QPP (Québec Pension Plan) at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026) instead of the federal CPP. There is also a QPP2 rate of 4% on earnings between the YMPE and YAMPE ($85,000 in 2026).`
-            : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and the Year's Maximum Pensionable Earnings ($74,600 in 2026). High earners also pay CPP2 at 4% on earnings between the YMPE and the YAMPE ($85,000 in 2026).`,
+            ? `Quebec workers pay QPP (Québec Pension Plan) at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026) instead of the federal CPP.`
+            : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and the Year's Maximum Pensionable Earnings ($74,600 in 2026).`,
         },
       },
       {
@@ -150,8 +140,8 @@ export default function ProvincePage({ params }: Props) {
         acceptedAnswer: {
           '@type': 'Answer',
           text: abbr === 'QC'
-            ? `Quebec workers pay a reduced EI rate of 1.30% (2026) on insurable earnings up to $68,900, because they also contribute to QPIP (Québec Parental Insurance Plan) at 0.494%.`
-            : `Workers in ${provinceInfo.name} pay EI (Employment Insurance) premiums at 1.63% (2026) on insurable earnings up to $68,900, for a maximum annual employee contribution of approximately $1,077.`,
+            ? `Quebec workers pay a reduced EI rate of 1.30% (2026) on insurable earnings up to $68,900.`
+            : `Workers in ${provinceInfo.name} pay EI premiums at 1.63% (2026) on insurable earnings up to $68,900.`,
         },
       },
       {
@@ -159,7 +149,7 @@ export default function ProvincePage({ params }: Props) {
         name: `How do RRSP contributions affect my ${provinceInfo.name} taxes?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `RRSP contributions reduce your federal and provincial taxable income dollar-for-dollar, so they lower both your federal and ${provinceInfo.name} provincial tax. The 2026 RRSP contribution limit is 18% of your previous year's earned income, up to $32,490. Use the Pre-Tax Deductions section in the calculator to see the exact savings.`,
+          text: `RRSP contributions reduce your federal and provincial taxable income dollar-for-dollar. The 2026 RRSP contribution limit is 18% of your previous year's earned income, up to $32,490.`,
         },
       },
       {
@@ -167,7 +157,7 @@ export default function ProvincePage({ params }: Props) {
         name: `What is the effective total tax rate on an $80,000 salary in ${provinceInfo.name}?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `On an $80,000 annual salary in ${provinceInfo.name}, the combined effective tax rate (federal + provincial + CPP + EI) typically falls between 25% and 35%, depending on deductions and the specific province. Use the calculator above to get a precise figure for your situation.`,
+          text: `On an $80,000 annual salary in ${provinceInfo.name}, the combined effective tax rate (federal + provincial + CPP + EI) typically falls between 25% and 35%, depending on deductions. Use the calculator above to get a precise figure.`,
         },
       },
     ],
@@ -175,165 +165,154 @@ export default function ProvincePage({ params }: Props) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="mb-4 text-sm text-gray-500">
-        <ol className="flex items-center gap-1 list-none">
-          <li><a href="/" className="hover:text-blue-700">Home</a></li>
+      <nav aria-label="Breadcrumb" className="mb-4 text-sm" style={{ color: '#78716C' }}>
+        <ol className="flex flex-wrap items-center gap-1 list-none">
+          <li><a href="/" style={{ color: '#78716C' }} className="hover:underline">Home</a></li>
           <li aria-hidden="true">›</li>
-          <li><a href="/canada" className="hover:text-blue-700">Canada</a></li>
+          <li><a href="/canada" style={{ color: '#78716C' }} className="hover:underline">Canada</a></li>
           <li aria-hidden="true">›</li>
-          <li className="text-gray-900">{provinceInfo.name} Calculator</li>
+          <li style={{ color: '#1C1917' }}>{provinceInfo.name} Calculator</li>
         </ol>
       </nav>
 
-      <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        {provinceInfo.name} Paycheck Tax Calculator 2026
-      </h1>
-      <p className="mb-8 text-gray-600">{intro}</p>
+      <div className="mb-8">
+        <p className="phase-label text-muted mb-2">Tax Year 2026 · Canada</p>
+        <h1 className="text-2xl font-bold leading-tight sm:text-3xl mb-3" style={{ color: '#1C1917' }}>
+          {provinceInfo.name} Paycheck Tax Calculator 2026
+        </h1>
+        <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>{intro}</p>
+      </div>
 
       <Calculator defaultCountry="CA" defaultProvince={abbr} />
-
-      {/* How taxes work */}
-      <section className="mt-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
-          How {provinceInfo.name} paycheck taxes work
-        </h2>
-        <div className="space-y-3 leading-relaxed text-gray-700">
-          <p>
-            Every {provinceInfo.name} paycheck is subject to four main deductions: federal income tax,{' '}
-            {abbr === 'QC' ? 'QPP (Québec Pension Plan)' : 'CPP (Canada Pension Plan)'},
-            {abbr === 'QC' ? ' EI (with QPIP),' : ' EI (Employment Insurance),'} and{' '}
-            {provinceInfo.name} provincial income tax.
-          </p>
-          <p>
-            <strong>Federal income tax</strong> uses progressive brackets from 15% to 33% in 2026.
-            The federal Basic Personal Amount of $16,452 (2026) generates a 15% non-refundable credit
-            reducing your federal tax owing.
-          </p>
-          <p>
-            {abbr === 'QC' ? (
-              <>
-                <strong>QPP contributions</strong> are 6.4% on earnings between $3,500 and $74,600 (2026 YMPE).
-                QPP2 applies at 4% on earnings between the YMPE and $85,000 (YAMPE). Quebec workers also pay
-                QPIP at 0.494% on earnings up to $98,000, and a reduced EI rate of 1.30%.
-              </>
-            ) : (
-              <>
-                <strong>CPP contributions</strong> are 5.95% on earnings between $3,500 and $71,300
-                (2026 YMPE). CPP2 applies at 4% on earnings between $74,600 and $85,000 (YAMPE). EI premiums
-                are 1.64% on insurable earnings up to $68,900.
-              </>
-            )}
-          </p>
-          <p>
-            <strong>{provinceInfo.name} provincial income tax</strong> uses brackets starting at{' '}
-            {(config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '')}% and reaching {topRate}% at the top.
-            The provincial Basic Personal Amount of ${config.basicPersonalAmount.toLocaleString()} generates
-            a {(config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '')}% non-refundable credit.
-            {config.hasSurtax && (
-              ` Ontario also levies a provincial surtax: 20% on provincial tax exceeding $5,315 and an
-              additional 36% on provincial tax exceeding $6,802.`
-            )}
-          </p>
-          <p>
-            Pre-tax deductions — including RRSP contributions, group health benefits, and employer pension
-            contributions — reduce your taxable income for both federal and provincial purposes, shrinking
-            every bracket calculation simultaneously.
-          </p>
-        </div>
-      </section>
-
-      {/* Bracket table */}
-      <section className="mt-10">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
-          {provinceInfo.name} provincial income tax brackets 2026
-        </h2>
-        {formatBracketTable(config.brackets, config.basicPersonalAmount, provinceInfo.name)}
-      </section>
-
-      {/* How to use */}
-      <section className="mt-10">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">How to use this calculator</h2>
-        <ol className="list-inside list-decimal space-y-2 leading-relaxed text-gray-700">
-          <li>Enter your gross salary as an annual amount or per paycheck.</li>
-          <li>Select your pay frequency (weekly, bi-weekly, semi-monthly, monthly, or annually).</li>
-          <li>Confirm Canada is selected and {provinceInfo.name} appears in the province dropdown.</li>
-          <li>Add pre-tax deductions (RRSP, group benefits, pension) to lower your taxable income.</li>
-          <li>View your full 2026 tax breakdown including federal, provincial, CPP, and EI.</li>
-          <li>View your take-home pay, effective tax rates, and full annual breakdown in the result panel.</li>
-        </ol>
-      </section>
-
-      {/* In-content ad */}
-      <div
-        data-ad-slot="in-content"
-        data-ad-format="horizontal"
-        className="mx-auto my-8 min-h-[90px] max-w-[728px] rounded bg-gray-100"
-        aria-hidden="true"
-      />
-
-      {/* FAQ */}
-      <section className="mt-10" aria-label={`${provinceInfo.name} paycheck tax FAQ`}>
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">
-          {provinceInfo.name} Paycheck Tax FAQ
-        </h2>
-        <div className="space-y-6">
-          {[
-            {
-              q: `What is the provincial income tax rate in ${provinceInfo.name}?`,
-              a: `${provinceInfo.name} uses progressive provincial income tax brackets. The lowest rate is ${(config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '')}% and the top rate is ${topRate}%. The provincial Basic Personal Amount of $${config.basicPersonalAmount.toLocaleString()} generates a non-refundable credit that reduces your tax owing. Use the calculator above to see your specific provincial tax amount.`,
-            },
-            {
-              q: `How is CPP calculated in ${provinceInfo.name}?`,
-              a: abbr === 'QC'
-                ? `Quebec workers pay QPP at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026). QPP2 applies at 4% on earnings between $71,300 and $81,900. Workers also pay QPIP at 0.494% on insurable earnings up to $98,000, and EI at the reduced Quebec rate of 1.30%.`
-                : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and $74,600 (2026 YMPE). A secondary CPP2 rate of 4% applies on earnings from $74,600 to $85,000 (YAMPE). The maximum annual employee CPP contribution is approximately $4,230 for 2026.`,
-            },
-            {
-              q: `Do RRSP contributions reduce taxes in ${provinceInfo.name}?`,
-              a: `Yes. RRSP contributions reduce both your federal and ${provinceInfo.name} provincial taxable income dollar-for-dollar. The more you contribute, the lower your effective tax rate. The 2026 RRSP limit is 18% of your 2025 earned income, up to $32,490. Enter your RRSP amount in the Pre-Tax Deductions section above to see the impact.`,
-            },
-            {
-              q: `What is the effective tax rate on an $80,000 salary in ${provinceInfo.name}?`,
-              a: `On an $80,000 annual salary in ${provinceInfo.name} with no additional deductions, the combined effective rate (federal + provincial + CPP + EI) typically falls between 25% and 35%. Use the calculator for the exact figure based on your pay frequency and deductions.`,
-            },
-            {
-              q: `How do I calculate my biweekly take-home pay in ${provinceInfo.name}?`,
-              a: `Divide your annual salary by 26 to get your gross biweekly pay, then subtract federal income tax, ${abbr === 'QC' ? 'QPP and QPIP' : 'CPP'}, EI, and ${provinceInfo.name} provincial income tax for each pay period. The calculator above does all of this automatically — enter your annual salary, select "Bi-weekly" as your pay frequency, and the result panel shows your exact biweekly take-home amount.`,
-            },
-          ].map(({ q, a }) => (
-            <div key={q}>
-              <h3 className="font-semibold text-gray-900">{q}</h3>
-              <p className="mt-1 leading-relaxed text-gray-700">{a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <AffiliateCTA />
       <EmailCapture />
 
+      {/* Content section */}
+      <section className="mt-12 overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
+        <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
+          <span className="phase-label text-phase2">{provinceInfo.name} Tax Details</span>
+        </div>
+        <div className="px-6 py-6 space-y-8" style={{ color: '#44403C' }}>
+
+          <div>
+            <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>
+              How {provinceInfo.name} paycheck taxes work
+            </h2>
+            <div className="space-y-3 text-sm leading-relaxed">
+              <p>
+                Every {provinceInfo.name} paycheck is subject to four main deductions: federal income tax,{' '}
+                {abbr === 'QC' ? 'QPP (Québec Pension Plan)' : 'CPP (Canada Pension Plan)'},
+                {abbr === 'QC' ? ' EI (with QPIP),' : ' EI (Employment Insurance),'} and{' '}
+                {provinceInfo.name} provincial income tax.
+              </p>
+              <p>
+                <strong>Federal income tax</strong> uses progressive brackets from 15% to 33% in 2026.
+                The federal Basic Personal Amount of $16,452 (2026) generates a 15% non-refundable credit
+                reducing your federal tax owing.
+              </p>
+              <p>
+                {abbr === 'QC' ? (
+                  <>
+                    <strong>QPP contributions</strong> are 6.4% on earnings between $3,500 and $74,600 (2026 YMPE).
+                    QPP2 applies at 4% on earnings between the YMPE and $85,000 (YAMPE). Quebec workers also pay
+                    QPIP at 0.494% on earnings up to $98,000, and a reduced EI rate of 1.30%.
+                  </>
+                ) : (
+                  <>
+                    <strong>CPP contributions</strong> are 5.95% on earnings between $3,500 and $74,600
+                    (2026 YMPE). CPP2 applies at 4% on earnings between $74,600 and $85,000 (YAMPE). EI premiums
+                    are 1.63% on insurable earnings up to $68,900.
+                  </>
+                )}
+              </p>
+              <p>
+                <strong>{provinceInfo.name} provincial income tax</strong> uses brackets starting at{' '}
+                {(config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '')}% and reaching {topRate}% at the top.
+                The provincial Basic Personal Amount of ${config.basicPersonalAmount.toLocaleString()} generates
+                a non-refundable credit.
+                {config.hasSurtax && (
+                  ` Ontario also levies a provincial surtax: 20% on provincial tax exceeding $5,315 and an
+                  additional 36% on provincial tax exceeding $6,802.`
+                )}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>
+              {provinceInfo.name} provincial income tax brackets 2026
+            </h2>
+            {formatBracketTable(config.brackets, config.basicPersonalAmount, provinceInfo.name)}
+          </div>
+
+          <div>
+            <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>How to use this calculator</h2>
+            <ol className="list-inside list-decimal space-y-2 text-sm leading-relaxed">
+              <li>Enter your gross salary as an annual amount or per paycheck.</li>
+              <li>Select your pay frequency (weekly, bi-weekly, semi-monthly, monthly, or annually).</li>
+              <li>Confirm Canada is selected and {provinceInfo.name} appears in the province dropdown.</li>
+              <li>Add pre-tax deductions (RRSP, group benefits, pension) to lower your taxable income.</li>
+              <li>View your full 2026 tax breakdown including federal, provincial, CPP, and EI.</li>
+            </ol>
+          </div>
+
+          <div aria-label={`${provinceInfo.name} paycheck tax FAQ`}>
+            <h2 className="text-lg font-semibold mb-4" style={{ color: '#1C1917' }}>
+              {provinceInfo.name} Paycheck Tax FAQ
+            </h2>
+            <div className="space-y-5">
+              {[
+                {
+                  q: `What is the provincial income tax rate in ${provinceInfo.name}?`,
+                  a: `${provinceInfo.name} uses progressive provincial income tax brackets. The lowest rate is ${(config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '')}% and the top rate is ${topRate}%. The provincial Basic Personal Amount of $${config.basicPersonalAmount.toLocaleString()} generates a non-refundable credit that reduces your tax owing.`,
+                },
+                {
+                  q: `How is CPP calculated in ${provinceInfo.name}?`,
+                  a: abbr === 'QC'
+                    ? `Quebec workers pay QPP at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026). QPP2 applies at 4% on earnings between $74,600 and $85,000.`
+                    : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and $74,600 (2026 YMPE). CPP2 at 4% applies on earnings from $74,600 to $85,000.`,
+                },
+                {
+                  q: `Do RRSP contributions reduce taxes in ${provinceInfo.name}?`,
+                  a: `Yes. RRSP contributions reduce both your federal and ${provinceInfo.name} provincial taxable income dollar-for-dollar. The 2026 RRSP limit is 18% of your 2025 earned income, up to $32,490.`,
+                },
+                {
+                  q: `What is the effective tax rate on an $80,000 salary in ${provinceInfo.name}?`,
+                  a: `On an $80,000 annual salary in ${provinceInfo.name} with no additional deductions, the combined effective rate (federal + provincial + CPP + EI) typically falls between 25% and 35%. Use the calculator for the exact figure.`,
+                },
+                {
+                  q: `How do I calculate my biweekly take-home pay in ${provinceInfo.name}?`,
+                  a: `Divide your annual salary by 26 to get your gross biweekly pay, then subtract federal income tax, ${abbr === 'QC' ? 'QPP and QPIP' : 'CPP'}, EI, and ${provinceInfo.name} provincial income tax. The calculator above does all of this automatically.`,
+                },
+              ].map(({ q, a }) => (
+                <div key={q}>
+                  <h3 className="font-semibold text-sm" style={{ color: '#1C1917' }}>{q}</h3>
+                  <p className="mt-1 text-sm leading-relaxed" style={{ color: '#44403C' }}>{a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Nearby province links */}
       {nearbyLinks.length > 0 && (
-        <section className="mt-12">
-          <h2 className="mb-4 text-xl font-bold text-gray-900">
-            Compare with other provinces
-          </h2>
+        <section className="mt-10">
+          <p className="phase-label text-muted mb-2">Compare</p>
+          <h2 className="text-xl font-bold mb-4" style={{ color: '#1C1917' }}>Compare with other provinces</h2>
           <div className="flex flex-wrap gap-2">
             {nearbyLinks.map((p) => (
               <a
                 key={p.abbreviation}
                 href={`/canada/${p.slug}`}
-                className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-blue-700 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
               >
                 {p.name} Calculator
               </a>
