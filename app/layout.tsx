@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import NavHeader from '@/components/NavHeader';
+import AdSlot from '@/components/AdSlot';
 
 const DOMAIN = 'https://paychecktaxcalc.com';
 
@@ -59,14 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="mt-20 border-t" style={{ borderColor: '#D6D1C8' }}>
           <div className="mx-auto max-w-6xl px-4 py-8">
             <div className="mx-auto mb-6 max-w-[728px]">
-              <ins
-                className="adsbygoogle"
-                style={{ display: 'block' }}
-                data-ad-client="ca-pub-8870870806520160"
-                data-ad-slot="5915826217"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              />
+              <AdSlot slot="5915826217" />
             </div>
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm" style={{ color: '#78716C' }}>
               <p>© {new Date().getFullYear()} PaycheckTaxCalc · Built for clarity, not advice.</p>

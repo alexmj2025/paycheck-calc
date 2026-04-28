@@ -10,6 +10,7 @@ import FilingStatusSelector from './FilingStatusSelector';
 import ProvinceSelector from './ProvinceSelector';
 import ResultCard from './ResultCard';
 import TaxBreakdownTable from './TaxBreakdownTable';
+import AdSlot from './AdSlot';
 
 interface Props {
   defaultState?: string;
@@ -137,9 +138,7 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
   return (
     <div className="w-full">
       <div className="mx-auto mb-6 hidden max-w-[728px] md:block">
-        <ins className="adsbygoogle" style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160" data-ad-slot="3621580228"
-          data-ad-format="auto" data-full-width-responsive="true" />
+        <AdSlot slot="3621580228" />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_400px]">
@@ -303,9 +302,7 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
       </div>
 
       <div className="mx-auto mt-8 max-w-[728px]">
-        <ins className="adsbygoogle" style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160" data-ad-slot="7771744079"
-          data-ad-format="auto" data-full-width-responsive="true" />
+        <AdSlot slot="7771744079" />
       </div>
     </div>
   );
