@@ -9,7 +9,7 @@ export default function PrivacyPage() {
   return (
     <article className="prose prose-gray max-w-3xl">
       <h1>Privacy Policy</h1>
-      <p className="text-sm text-gray-500">Effective date: January 1, 2024</p>
+      <p className="text-sm text-gray-500">Effective date: January 1, 2026</p>
 
       <p>
         PaycheckTaxCalc (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website paychecktaxcalc.com. This page informs

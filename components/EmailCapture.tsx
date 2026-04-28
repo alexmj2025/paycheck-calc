@@ -30,7 +30,7 @@ export default function EmailCapture() {
 
   return (
     <section className="mt-12 rounded-xl bg-blue-700 px-6 py-8 text-white" aria-label="Email newsletter signup">
-      <h2 className="text-xl font-bold">Get 2025 &amp; 2026 tax tips in your inbox</h2>
+      <h2 className="text-xl font-bold">Get 2026 tax tips in your inbox</h2>
       <p className="mt-1 text-sm text-blue-100">
         Bracket updates, deduction strategies, and withholding guides — free.
       </p>

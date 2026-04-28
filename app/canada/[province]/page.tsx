@@ -54,10 +54,10 @@ function getProvinceIntro(name: string, abbr: Province, config: ProvinceTaxConfi
   const lowestRate = (config.lowestRate * 100).toFixed(4).replace(/\.?0+$/, '');
 
   if (abbr === 'AB') {
-    return `Alberta is Canada's most tax-friendly province, with a 10% flat rate on income up to $148,269 and one of the highest basic personal amounts at $21,003 — meaning more income is sheltered from tax before a single dollar is collected. High earners face a top provincial rate of ${topRate}%. Combined with federal tax, CPP (5.95%), and EI (1.64%), use the calculator above to find your exact Alberta take-home pay for 2025 or 2026.`;
+    return `Alberta is Canada's most tax-friendly province, with a 10% flat rate on income up to $148,269 and one of the highest basic personal amounts at $21,003 — meaning more income is sheltered from tax before a single dollar is collected. High earners face a top provincial rate of ${topRate}%. Combined with federal tax, CPP (5.95%), and EI (1.64%), use the calculator above to find your exact Alberta take-home pay for 2026.`;
   }
   if (abbr === 'QC') {
-    return `Quebec has its own provincial tax system administered by Revenu Québec, with brackets ranging from 14% to 25.75%. Workers in Quebec pay QPP (Québec Pension Plan) at 6.4% instead of the federal CPP, and QPIP (Québec Parental Insurance Plan) at 0.494%, while paying a reduced EI rate of 1.30%. The provincial Basic Personal Amount is $17,183. Use the calculator above to get your exact Quebec take-home pay for 2025 or 2026.`;
+    return `Quebec has its own provincial tax system administered by Revenu Québec, with brackets ranging from 14% to 25.75%. Workers in Quebec pay QPP (Québec Pension Plan) at 6.4% instead of the federal CPP, and QPIP (Québec Parental Insurance Plan) at 0.494%, while paying a reduced EI rate of 1.30%. The provincial Basic Personal Amount is $17,183. Use the calculator above to get your exact Quebec take-home pay for 2026.`;
   }
   if (abbr === 'ON') {
     return `Ontario workers face a provincial income tax starting at ${lowestRate}% and rising to ${topRate}%, plus a unique provincial surtax on higher earners — an extra 20% on provincial tax exceeding $5,315, and an additional 36% on tax exceeding $6,802. The provincial Basic Personal Amount is $11,141. Combined with federal tax, CPP, and EI, Ontario's total tax burden can be significant for high earners. Use the calculator to see your exact take-home pay.`;
@@ -66,20 +66,20 @@ function getProvinceIntro(name: string, abbr: Province, config: ProvinceTaxConfi
     return `British Columbia uses a seven-bracket provincial income tax system, with rates ranging from ${lowestRate}% to ${topRate}% for the highest earners above $240,716. The provincial Basic Personal Amount is $11,981. BC is among the higher-tax provinces for top earners but competitive in the lower brackets. Combined with federal tax, CPP, and EI, use the calculator above to find your exact BC take-home pay.`;
   }
   if (abbr === 'NS') {
-    return `Nova Scotia has one of the higher top provincial tax rates in Canada at ${topRate}%, applying to income above $150,000. The provincial Basic Personal Amount is $8,481 — one of the lowest in the country, meaning less income is sheltered from tax. The lowest bracket rate is ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to find your exact Nova Scotia take-home pay for 2025 or 2026.`;
+    return `Nova Scotia has one of the higher top provincial tax rates in Canada at ${topRate}%, applying to income above $150,000. The provincial Basic Personal Amount is $8,481 — one of the lowest in the country, meaning less income is sheltered from tax. The lowest bracket rate is ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to find your exact Nova Scotia take-home pay for 2026.`;
   }
   if (abbr === 'NL') {
-    return `Newfoundland and Labrador has a seven-bracket provincial system with Canada's highest top marginal rate at ${topRate}%, applying to income above $551,739. The Basic Personal Amount is $10,818. The lowest rate starts at ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to calculate your exact Newfoundland take-home pay for 2025 or 2026.`;
+    return `Newfoundland and Labrador has a seven-bracket provincial system with Canada's highest top marginal rate at ${topRate}%, applying to income above $551,739. The Basic Personal Amount is $10,818. The lowest rate starts at ${lowestRate}%. Combined with federal tax, CPP, and EI, use the calculator above to calculate your exact Newfoundland take-home pay for 2026.`;
   }
 
-  return `${name} uses a progressive provincial income tax system with brackets starting at ${lowestRate}% and reaching ${topRate}% for the highest earners. The provincial Basic Personal Amount is $${config.basicPersonalAmount.toLocaleString()}, which generates a non-refundable tax credit reducing the tax you owe. On top of provincial tax, ${name} workers also pay federal income tax (15%–33%), CPP contributions (5.95% up to YMPE), and EI premiums (1.64% up to MIE). Pre-tax deductions such as RRSP contributions, group benefits, and pension contributions can reduce your taxable income. Use the calculator above to calculate your exact ${name} take-home pay for 2025 or 2026.`;
+  return `${name} uses a progressive provincial income tax system with brackets starting at ${lowestRate}% and reaching ${topRate}% for the highest earners. The provincial Basic Personal Amount is $${config.basicPersonalAmount.toLocaleString()}, which generates a non-refundable tax credit reducing the tax you owe. On top of provincial tax, ${name} workers also pay federal income tax (15%–33%), CPP contributions (5.95% up to YMPE), and EI premiums (1.64% up to MIE). Pre-tax deductions such as RRSP contributions, group benefits, and pension contributions can reduce your taxable income. Use the calculator above to calculate your exact ${name} take-home pay for 2026.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const provinceInfo = getProvinceBySlug(params.province);
   if (!provinceInfo) return {};
-  const title = `${provinceInfo.name} Paycheck Tax Calculator 2025 & 2026 — Free Take-Home Pay`;
-  const description = `Calculate your exact ${provinceInfo.name} take-home pay after federal and provincial taxes, CPP, and EI. Free calculator with 2025 and 2026 tax brackets.`;
+  const title = `${provinceInfo.name} Paycheck Tax Calculator 2026 — Free Take-Home Pay`;
+  const description = `Calculate your exact ${provinceInfo.name} take-home pay after federal and provincial taxes, CPP, and EI. Free calculator with 2026 tax brackets.`;
   return {
     title,
     description,
@@ -140,8 +140,8 @@ export default function ProvincePage({ params }: Props) {
         acceptedAnswer: {
           '@type': 'Answer',
           text: abbr === 'QC'
-            ? `Quebec workers pay QPP (Québec Pension Plan) at 6.4% on pensionable earnings between $3,500 and the YMPE ($71,300 in 2025) instead of the federal CPP. There is also a QPP2 rate of 4% on earnings between the YMPE and YAMPE ($81,900 in 2025).`
-            : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and the Year's Maximum Pensionable Earnings ($71,300 in 2025). High earners also pay CPP2 at 4% on earnings between the YMPE and the YAMPE ($81,900 in 2025).`,
+            ? `Quebec workers pay QPP (Québec Pension Plan) at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026) instead of the federal CPP. There is also a QPP2 rate of 4% on earnings between the YMPE and YAMPE ($85,000 in 2026).`
+            : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and the Year's Maximum Pensionable Earnings ($74,600 in 2026). High earners also pay CPP2 at 4% on earnings between the YMPE and the YAMPE ($85,000 in 2026).`,
         },
       },
       {
@@ -150,8 +150,8 @@ export default function ProvincePage({ params }: Props) {
         acceptedAnswer: {
           '@type': 'Answer',
           text: abbr === 'QC'
-            ? `Quebec workers pay a reduced EI rate of 1.30% (2025) on insurable earnings up to $65,700, because they also contribute to QPIP (Québec Parental Insurance Plan) at 0.494%.`
-            : `Workers in ${provinceInfo.name} pay EI (Employment Insurance) premiums at 1.64% (2025) on insurable earnings up to $65,700, for a maximum annual employee contribution of approximately $1,077.`,
+            ? `Quebec workers pay a reduced EI rate of 1.30% (2026) on insurable earnings up to $68,900, because they also contribute to QPIP (Québec Parental Insurance Plan) at 0.494%.`
+            : `Workers in ${provinceInfo.name} pay EI (Employment Insurance) premiums at 1.63% (2026) on insurable earnings up to $68,900, for a maximum annual employee contribution of approximately $1,077.`,
         },
       },
       {
@@ -159,7 +159,7 @@ export default function ProvincePage({ params }: Props) {
         name: `How do RRSP contributions affect my ${provinceInfo.name} taxes?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `RRSP contributions reduce your federal and provincial taxable income dollar-for-dollar, so they lower both your federal and ${provinceInfo.name} provincial tax. The 2025 RRSP contribution limit is 18% of your previous year's earned income, up to $32,490. Use the Pre-Tax Deductions section in the calculator to see the exact savings.`,
+          text: `RRSP contributions reduce your federal and provincial taxable income dollar-for-dollar, so they lower both your federal and ${provinceInfo.name} provincial tax. The 2026 RRSP contribution limit is 18% of your previous year's earned income, up to $32,490. Use the Pre-Tax Deductions section in the calculator to see the exact savings.`,
         },
       },
       {
@@ -196,7 +196,7 @@ export default function ProvincePage({ params }: Props) {
       </nav>
 
       <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        {provinceInfo.name} Paycheck Tax Calculator 2024 &amp; 2025
+        {provinceInfo.name} Paycheck Tax Calculator 2026
       </h1>
       <p className="mb-8 text-gray-600">{intro}</p>
 
@@ -215,22 +215,22 @@ export default function ProvincePage({ params }: Props) {
             {provinceInfo.name} provincial income tax.
           </p>
           <p>
-            <strong>Federal income tax</strong> uses progressive brackets from 15% to 33% in 2025.
-            The federal Basic Personal Amount of $16,129 (2025) generates a 15% non-refundable credit
+            <strong>Federal income tax</strong> uses progressive brackets from 15% to 33% in 2026.
+            The federal Basic Personal Amount of $16,452 (2026) generates a 15% non-refundable credit
             reducing your federal tax owing.
           </p>
           <p>
             {abbr === 'QC' ? (
               <>
-                <strong>QPP contributions</strong> are 6.4% on earnings between $3,500 and $71,300 (2025 YMPE).
-                QPP2 applies at 4% on earnings between the YMPE and $81,900 (YAMPE). Quebec workers also pay
+                <strong>QPP contributions</strong> are 6.4% on earnings between $3,500 and $74,600 (2026 YMPE).
+                QPP2 applies at 4% on earnings between the YMPE and $85,000 (YAMPE). Quebec workers also pay
                 QPIP at 0.494% on earnings up to $98,000, and a reduced EI rate of 1.30%.
               </>
             ) : (
               <>
                 <strong>CPP contributions</strong> are 5.95% on earnings between $3,500 and $71,300
-                (2025 YMPE). CPP2 applies at 4% on earnings between $71,300 and $81,900 (YAMPE). EI premiums
-                are 1.64% on insurable earnings up to $65,700.
+                (2026 YMPE). CPP2 applies at 4% on earnings between $74,600 and $85,000 (YAMPE). EI premiums
+                are 1.64% on insurable earnings up to $68,900.
               </>
             )}
           </p>
@@ -255,7 +255,7 @@ export default function ProvincePage({ params }: Props) {
       {/* Bracket table */}
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold text-gray-900">
-          {provinceInfo.name} provincial income tax brackets 2025
+          {provinceInfo.name} provincial income tax brackets 2026
         </h2>
         {formatBracketTable(config.brackets, config.basicPersonalAmount, provinceInfo.name)}
       </section>
@@ -268,7 +268,7 @@ export default function ProvincePage({ params }: Props) {
           <li>Select your pay frequency (weekly, bi-weekly, semi-monthly, monthly, or annually).</li>
           <li>Confirm Canada is selected and {provinceInfo.name} appears in the province dropdown.</li>
           <li>Add pre-tax deductions (RRSP, group benefits, pension) to lower your taxable income.</li>
-          <li>Toggle between 2025 and 2026 to compare how tax changes affect your take-home pay.</li>
+          <li>View your full 2026 tax breakdown including federal, provincial, CPP, and EI.</li>
           <li>View your take-home pay, effective tax rates, and full annual breakdown in the result panel.</li>
         </ol>
       </section>
@@ -295,12 +295,12 @@ export default function ProvincePage({ params }: Props) {
             {
               q: `How is CPP calculated in ${provinceInfo.name}?`,
               a: abbr === 'QC'
-                ? `Quebec workers pay QPP at 6.4% on pensionable earnings between $3,500 and the YMPE ($71,300 in 2025). QPP2 applies at 4% on earnings between $71,300 and $81,900. Workers also pay QPIP at 0.494% on insurable earnings up to $98,000, and EI at the reduced Quebec rate of 1.30%.`
-                : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and $71,300 (2025 YMPE). A secondary CPP2 rate of 4% applies on earnings from $71,300 to $81,900. The maximum annual employee CPP contribution is approximately $4,034 for 2025.`,
+                ? `Quebec workers pay QPP at 6.4% on pensionable earnings between $3,500 and the YMPE ($74,600 in 2026). QPP2 applies at 4% on earnings between $71,300 and $81,900. Workers also pay QPIP at 0.494% on insurable earnings up to $98,000, and EI at the reduced Quebec rate of 1.30%.`
+                : `Workers in ${provinceInfo.name} pay CPP at 5.95% on pensionable earnings between $3,500 and $74,600 (2026 YMPE). A secondary CPP2 rate of 4% applies on earnings from $74,600 to $85,000 (YAMPE). The maximum annual employee CPP contribution is approximately $4,230 for 2026.`,
             },
             {
               q: `Do RRSP contributions reduce taxes in ${provinceInfo.name}?`,
-              a: `Yes. RRSP contributions reduce both your federal and ${provinceInfo.name} provincial taxable income dollar-for-dollar. The more you contribute, the lower your effective tax rate. The 2025 RRSP limit is 18% of your 2024 earned income, up to $32,490. Enter your RRSP amount in the Pre-Tax Deductions section above to see the impact.`,
+              a: `Yes. RRSP contributions reduce both your federal and ${provinceInfo.name} provincial taxable income dollar-for-dollar. The more you contribute, the lower your effective tax rate. The 2026 RRSP limit is 18% of your 2025 earned income, up to $32,490. Enter your RRSP amount in the Pre-Tax Deductions section above to see the impact.`,
             },
             {
               q: `What is the effective tax rate on an $80,000 salary in ${provinceInfo.name}?`,

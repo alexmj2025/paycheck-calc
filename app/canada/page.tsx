@@ -5,9 +5,9 @@ import EmailCapture from '@/components/EmailCapture';
 import { PROVINCES } from '@/lib/provinceData';
 
 export const metadata: Metadata = {
-  title: 'Canada Paycheck Tax Calculator 2025 & 2026 — Free Take-Home Pay by Province',
+  title: 'Canada Paycheck Tax Calculator 2026 — Free Take-Home Pay by Province',
   description:
-    'Calculate your exact Canadian take-home pay after federal and provincial taxes. Free paycheck calculator for all 10 provinces with 2025 and 2026 tax brackets, CPP, and EI.',
+    'Calculate your exact Canadian take-home pay after federal and provincial taxes. Free paycheck calculator for all 10 provinces with 2026 tax brackets, CPP, and EI.',
   alternates: { canonical: 'https://paychecktaxcalc.com/canada' },
 };
 
@@ -15,11 +15,11 @@ export default function CanadaPage() {
   return (
     <div>
       <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        Canada Paycheck Tax Calculator 2024 &amp; 2025
+        Canada Paycheck Tax Calculator 2026
       </h1>
       <p className="mb-8 text-gray-600">
         Calculate your exact Canadian take-home pay after federal income tax, CPP contributions, EI premiums,
-        and provincial income tax. Covers all 10 provinces with 2025 and 2026 rates.
+        and provincial income tax. Covers all 10 provinces with 2026 rates.
       </p>
 
       <Calculator defaultCountry="CA" />
@@ -51,18 +51,18 @@ export default function CanadaPage() {
           <h2 className="mb-4 text-2xl font-bold text-gray-900">How Canadian paycheck taxes work</h2>
           <p className="leading-relaxed">
             Every Canadian paycheck is subject to four main deductions. <strong>Federal income tax</strong> uses
-            progressive brackets ranging from 15% to 33% in 2025. The federal Basic Personal Amount (BPA) of
-            $16,129 (2025) generates a non-refundable tax credit that reduces your federal tax owing.
+            progressive brackets ranging from 15% to 33% in 2026. The federal Basic Personal Amount (BPA) of
+            $16,452 (2026) generates a non-refundable tax credit that reduces your federal tax owing.
           </p>
           <p className="mt-3 leading-relaxed">
             <strong>CPP contributions</strong> (Canada Pension Plan) are 5.95% of pensionable earnings between
-            $3,500 and $71,300 (2025 YMPE). High earners also contribute CPP2 at 4% on earnings between the YMPE
-            and the Year&apos;s Additional Maximum Pensionable Earnings ($81,900 in 2025). Quebec workers contribute
+            $3,500 and $74,600 (2026 YMPE). High earners also contribute CPP2 at 4% on earnings between the YMPE
+            and the Year&apos;s Additional Maximum Pensionable Earnings ($85,000 in 2026). Quebec workers contribute
             to QPP instead of CPP at a higher rate of 6.4%.
           </p>
           <p className="mt-3 leading-relaxed">
-            <strong>EI premiums</strong> (Employment Insurance) are 1.64% (2025) on insurable earnings up to
-            $65,700. Quebec workers pay a reduced EI rate of 1.30% because they also pay into the Quebec Parental
+            <strong>EI premiums</strong> (Employment Insurance) are 1.63% (2026) on insurable earnings up to
+            $68,900. Quebec workers pay a reduced EI rate of 1.30% because they also pay into the Quebec Parental
             Insurance Plan (QPIP).
           </p>
           <p className="mt-3 leading-relaxed">

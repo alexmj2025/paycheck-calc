@@ -6,13 +6,13 @@ import NavHeader from '@/components/NavHeader';
 const DOMAIN = 'https://paychecktaxcalc.com';
 
 export const metadata: Metadata = {
-  title: 'Paycheck Tax Calculator 2025 & 2026 — Free Take-Home Pay Calculator by State',
+  title: 'Paycheck Tax Calculator 2026 — Free Take-Home Pay Calculator by State',
   description:
-    'Calculate your exact take-home pay after federal and state taxes. Free paycheck calculator for all 50 US states + Canada with 2025 and 2026 tax brackets.',
+    'Calculate your exact take-home pay after federal and state taxes. Free paycheck calculator for all 50 US states + Canada with 2026 tax brackets.',
   metadataBase: new URL(DOMAIN),
   alternates: { canonical: DOMAIN },
   openGraph: {
-    title: 'Paycheck Tax Calculator 2025 & 2026',
+    title: 'Paycheck Tax Calculator 2026',
     description: 'Calculate your exact take-home pay after federal and state taxes.',
     url: DOMAIN,
     siteName: 'PaycheckTaxCalc',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Paycheck Tax Calculator 2025 & 2026',
+    title: 'Paycheck Tax Calculator 2026',
     description: 'Calculate your exact take-home pay after federal and state taxes.',
     images: ['/og-image.png'],
   },
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </nav>
             </div>
             <p className="mt-3 text-xs text-gray-400">
-              Tax information is based on 2025 & 2026 IRS guidelines and state revenue department rules.
+              Tax information is based on 2026 IRS guidelines and state revenue department rules.
               Always consult a qualified tax professional for advice specific to your situation.
             </p>
           </div>

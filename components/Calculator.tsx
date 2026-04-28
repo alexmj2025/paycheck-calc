@@ -89,7 +89,7 @@ function NumberInput({
 function YearToggle({ year, onChange }: { year: TaxYear; onChange: (y: TaxYear) => void }) {
   return (
     <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Tax year">
-      {([2025, 2026] as TaxYear[]).map((yr) => (
+      {([2026] as TaxYear[]).map((yr) => (
         <button
           key={yr} type="button" onClick={() => onChange(yr)} aria-pressed={year === yr}
           className={`rounded-md px-3 py-1 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${

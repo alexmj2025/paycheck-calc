@@ -95,8 +95,8 @@ function getStateIntro(name: string, abbr: string, config: StateTaxConfig): stri
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const stateInfo = getStateBySlug(params.state);
   if (!stateInfo) return {};
-  const title = `${stateInfo.name} Paycheck Tax Calculator 2025 & 2026 — Free Take-Home Pay Calculator`;
-  const description = `Calculate your exact ${stateInfo.name} take-home pay after federal and state taxes. Free ${stateInfo.name} paycheck calculator with 2025 and 2026 tax brackets and rates.`;
+  const title = `${stateInfo.name} Paycheck Tax Calculator 2026 — Free Take-Home Pay Calculator`;
+  const description = `Calculate your exact ${stateInfo.name} take-home pay after federal and state taxes. Free ${stateInfo.name} paycheck calculator with 2026 tax brackets and rates.`;
   return {
     title,
     description,
@@ -194,7 +194,7 @@ export default function StatePage({ params }: Props) {
                 only withhold federal income tax and FICA taxes (Social Security and Medicare) from each paycheck.
               </p>
               <p>
-                Federal income tax is calculated using 2025/2026 progressive brackets ranging from 10% to 37%. The
+                Federal income tax is calculated using 2026 progressive brackets ranging from 10% to 37%. The
                 standard deduction ($14,600 for single filers, $29,200 for married filing jointly) is subtracted
                 from your gross income before brackets are applied.
               </p>
@@ -220,7 +220,7 @@ export default function StatePage({ params }: Props) {
                 </p>
               )}
               <p>
-                Federal income tax is also withheld, using 2025/2026 brackets from 10% to 37%. The federal standard
+                Federal income tax is also withheld, using 2026 brackets from 10% to 37%. The federal standard
                 deduction ($14,600 single, $29,200 MFJ) is separate from any {stateInfo.name} state deduction.
               </p>
             </>
@@ -237,7 +237,7 @@ export default function StatePage({ params }: Props) {
       {/* Bracket table */}
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold text-gray-900">
-          {stateInfo.name} income tax brackets 2025 & 2026
+          {stateInfo.name} income tax brackets 2026
         </h2>
         {config.type === 'none' ? (
           <p className="text-gray-700">
@@ -288,9 +288,9 @@ export default function StatePage({ params }: Props) {
             {
               q: `What is the ${stateInfo.name} standard deduction?`,
               a: config.standardDeduction
-                ? `${stateInfo.name}'s standard deduction is $${config.standardDeduction.single.toLocaleString()} for single filers and $${config.standardDeduction.married.toLocaleString()} for married filing jointly (2025/2026). This amount is subtracted from your income before state tax brackets are applied.`
+                ? `${stateInfo.name}'s standard deduction is $${config.standardDeduction.single.toLocaleString()} for single filers and $${config.standardDeduction.married.toLocaleString()} for married filing jointly (2026). This amount is subtracted from your income before state tax brackets are applied.`
                 : config.type === 'none'
-                ? `${stateInfo.name} does not have a state income tax, so there is no ${stateInfo.name} standard deduction. The federal standard deduction ($15,000 single, $30,000 MFJ for 2025; $16,100 / $32,200 for 2026) still applies to your federal tax calculation.`
+                ? `${stateInfo.name} does not have a state income tax, so there is no ${stateInfo.name} standard deduction. The federal standard deduction ($16,100 single, $32,200 MFJ for 2026) still applies to your federal tax calculation.`
                 : `${stateInfo.name} may offer a standard deduction or personal exemption that reduces your state taxable income. Check with the ${stateInfo.name} Department of Revenue for the current amount.`,
             },
             {

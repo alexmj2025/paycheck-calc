@@ -33,7 +33,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Is this calculator accurate?',
-    a: 'This calculator uses 2025 and 2026 IRS tax brackets and published state tax rates and is accurate for most standard employment situations. It does not account for tax credits, alternative minimum tax (AMT), itemized deductions above the standard deduction, or self-employment income. For complex tax situations, consult a CPA.',
+    a: 'This calculator uses 2026 IRS tax brackets and published state tax rates and is accurate for most standard employment situations. It does not account for tax credits, alternative minimum tax (AMT), itemized deductions above the standard deduction, or self-employment income. For complex tax situations, consult a CPA.',
   },
   {
     q: 'What if I have multiple jobs?',
@@ -55,12 +55,11 @@ export default function HomePage() {
   return (
     <div>
       <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        Paycheck Tax Calculator 2025 &amp; 2026
+        Paycheck Tax Calculator 2026
       </h1>
       <p className="mb-8 text-gray-600">
         Free take-home pay calculator for all 50 US states and all 10 Canadian provinces.
-        Covers federal, state/provincial, and payroll taxes with both{' '}
-        <strong>2025</strong> and <strong>2026</strong> tax brackets.
+        Covers federal, state/provincial, and payroll taxes with <strong>2026</strong> tax brackets.
       </p>
 
       <Calculator />
@@ -85,7 +84,6 @@ export default function HomePage() {
             all reduce your taxable income before taxes are calculated.
           </p>
           <p className="mt-3 leading-relaxed">
-            Use the <strong>2025 / 2026 toggle</strong> to compare how the new brackets affect your take-home pay.
             Switch between the 🇺🇸 US and 🇨🇦 Canada tabs to calculate for either country.
           </p>
         </div>
@@ -163,41 +161,6 @@ export default function HomePage() {
             Social Security wage base: $184,500. Source: IRS Rev. Proc. 2025-32.
           </p>
 
-          <h3 className="mb-3 mt-8 text-lg font-semibold text-gray-800">2025 Tax Brackets</h3>
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 text-sm">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Rate</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Single</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Married Filing Jointly</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Head of Household</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {[
-                  ['10%', '$0 – $11,925', '$0 – $23,850', '$0 – $17,000'],
-                  ['12%', '$11,926 – $48,475', '$23,851 – $96,950', '$17,001 – $64,850'],
-                  ['22%', '$48,476 – $103,350', '$96,951 – $206,700', '$64,851 – $103,350'],
-                  ['24%', '$103,351 – $197,300', '$206,701 – $394,600', '$103,351 – $197,300'],
-                  ['32%', '$197,301 – $250,525', '$394,601 – $501,050', '$197,301 – $250,500'],
-                  ['35%', '$250,526 – $626,350', '$501,051 – $751,600', '$250,501 – $626,350'],
-                  ['37%', '$626,351+', '$751,601+', '$626,351+'],
-                ].map(([rate, single, mfj, hoh]) => (
-                  <tr key={rate} className="even:bg-gray-50">
-                    <td className="border border-gray-200 px-4 py-2 font-medium text-blue-700">{rate}</td>
-                    <td className="border border-gray-200 px-4 py-2">{single}</td>
-                    <td className="border border-gray-200 px-4 py-2">{mfj}</td>
-                    <td className="border border-gray-200 px-4 py-2">{hoh}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-2 text-sm text-gray-500">
-            Standard deductions (2025): Single $15,000 · Married filing jointly $30,000 · Head of household $22,500.
-            Social Security wage base: $176,100. Source: IRS Rev. Proc. 2024-40.
-          </p>
         </div>
 
         {/* No income tax states */}
