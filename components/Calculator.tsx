@@ -42,6 +42,11 @@ const DEFAULT_CA: CATaxInput = {
   additionalProvincialWithholding: 0,
 };
 
+const inputBase = 'w-full rounded-lg border bg-white px-3 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-phase1/40 transition-colors';
+const inputNormal = 'border-border hover:border-muted/60';
+const inputError = 'border-red-400 focus:ring-red-200';
+const labelBase = 'phase-label text-muted mb-1 block';
+
 function NumberInput({
   id, label, value, onChange, min = 0, prefix, error,
 }: {
@@ -68,43 +73,25 @@ function NumberInput({
   }
 
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="text-sm font-medium text-gray-700">{label}</label>
+    <div className="flex flex-col">
+      <label htmlFor={id} className={labelBase}>{label}</label>
       <div className="relative flex items-center">
-        {prefix && <span className="pointer-events-none absolute left-3 text-gray-500 select-none">{prefix}</span>}
+        {prefix && <span className="pointer-events-none absolute left-3 text-muted text-sm select-none">{prefix}</span>}
         <input
           id={id} type="number" inputMode="decimal" min={min} value={raw} onChange={handleChange}
           aria-describedby={error ? `${id}-error` : undefined}
           aria-invalid={!!error}
-          className={`w-full rounded-md border bg-white px-3 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring-1
-            ${prefix ? 'pl-7' : ''}
-            ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'}`}
+          className={`${inputBase} ${error ? inputError : inputNormal} ${prefix ? 'pl-7' : ''}`}
         />
       </div>
-      {error && <p id={`${id}-error`} role="alert" className="text-xs text-red-600">{error}</p>}
-    </div>
-  );
-}
-
-function YearToggle({ year, onChange }: { year: TaxYear; onChange: (y: TaxYear) => void }) {
-  return (
-    <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Tax year">
-      {([2026] as TaxYear[]).map((yr) => (
-        <button
-          key={yr} type="button" onClick={() => onChange(yr)} aria-pressed={year === yr}
-          className={`rounded-md px-3 py-1 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            year === yr ? 'bg-blue-600 text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100'
-          }`}
-        >
-          {yr}
-        </button>
-      ))}
+      {error && <p id={`${id}-error`} role="alert" className="mt-1 text-xs text-red-500">{error}</p>}
     </div>
   );
 }
 
 export default function Calculator({ defaultState, defaultProvince, defaultCountry }: Props) {
   const [country, setCountry] = useState<'US' | 'CA'>(defaultCountry ?? 'US');
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [usInput, setUsInput] = useState<TaxInput>({
     ...DEFAULT_US,
     state: defaultState ?? DEFAULT_US.state,
@@ -128,7 +115,6 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
     }
   }, [country, usInput, caInput]);
 
-  // US updaters
   const updateUS = useCallback(<K extends keyof TaxInput>(key: K, val: TaxInput[K]) => {
     setUsInput((p) => ({ ...p, [key]: val }));
   }, []);
@@ -138,8 +124,6 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
   const updateUSPostTax = useCallback(<K extends keyof TaxInput['postTaxDeductions']>(key: K, val: number) => {
     setUsInput((p) => ({ ...p, postTaxDeductions: { ...p.postTaxDeductions, [key]: val } }));
   }, []);
-
-  // CA updaters
   const updateCA = useCallback(<K extends keyof CATaxInput>(key: K, val: CATaxInput[K]) => {
     setCAInput((p) => ({ ...p, [key]: val }));
   }, []);
@@ -148,182 +132,192 @@ export default function Calculator({ defaultState, defaultProvince, defaultCount
   }, []);
 
   const locationLabel = country === 'US' ? usInput.state : caInput.province;
-  const currYear = country === 'US' ? usInput.taxYear : caInput.taxYear;
+  const selectBase = `${inputBase} ${inputNormal} appearance-none`;
 
   return (
     <div className="w-full">
       <div className="mx-auto mb-6 hidden max-w-[728px] md:block">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160"
-          data-ad-slot="top-banner"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+        <ins className="adsbygoogle" style={{ display: 'block' }}
+          data-ad-client="ca-pub-8870870806520160" data-ad-slot="top-banner"
+          data-ad-format="auto" data-full-width-responsive="true" />
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-        <div className="space-y-6">
+      <div className="grid gap-6 lg:grid-cols-[1fr_400px]">
 
-          {/* ── Country + year selector ── */}
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Country">
+        {/* ── PHASE 1: INPUTS ── */}
+        <div className="overflow-hidden rounded-2xl bg-white shadow-sm" style={{ border: '1px solid #E2DDD6' }}>
+          <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #C17F3E' }}>
+            <span className="phase-label text-phase1">Phase 1 · Your Inputs</span>
+          </div>
+
+          <div className="px-6 py-5 space-y-5">
+
+            {/* Country + year */}
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-1 rounded-full p-1" style={{ backgroundColor: '#F0EDE7', border: '1px solid #E2DDD6' }} role="group" aria-label="Country">
                 {(['US', 'CA'] as const).map((c) => (
                   <button
                     key={c} type="button" onClick={() => setCountry(c)} aria-pressed={country === c}
-                    className={`flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      country === c ? 'bg-blue-600 text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100'
-                    }`}
+                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all focus:outline-none"
+                    style={country === c
+                      ? { backgroundColor: '#FFFFFF', color: '#1C1917', boxShadow: '0 1px 3px rgba(0,0,0,0.12)' }
+                      : { color: '#78716C' }}
                   >
                     <span>{c === 'US' ? '🇺🇸' : '🇨🇦'}</span>
                     <span>{c === 'US' ? 'United States' : 'Canada'}</span>
                   </button>
                 ))}
               </div>
-              <YearToggle
-                year={currYear}
-                onChange={(yr) => country === 'US' ? updateUS('taxYear', yr) : updateCA('taxYear', yr)}
-              />
+              <span className="phase-label rounded-full px-3 py-1.5" style={{ backgroundColor: '#F5F0E8', color: '#C17F3E', border: '1px solid #E8D9C4' }}>
+                Tax Year 2026
+              </span>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="flex flex-col gap-1">
-                <label htmlFor="grossPayType" className="text-sm font-medium text-gray-700">Gross Pay Type</label>
-                <select
-                  id="grossPayType"
-                  value={country === 'US' ? usInput.grossPayType : caInput.grossPayType}
-                  onChange={(e) => country === 'US'
-                    ? updateUS('grossPayType', e.target.value as 'annual' | 'perPaycheck')
-                    : updateCA('grossPayType', e.target.value as 'annual' | 'perPaycheck')}
-                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                >
-                  <option value="annual">Annual Salary</option>
-                  <option value="perPaycheck">Per Paycheck</option>
-                </select>
+            {/* Gross pay type toggle */}
+            <div>
+              <span className={labelBase}>Gross Pay Type</span>
+              <div className="flex rounded-lg overflow-hidden" style={{ border: '1px solid #E2DDD6' }}>
+                {(['annual', 'perPaycheck'] as const).map((t) => {
+                  const active = (country === 'US' ? usInput.grossPayType : caInput.grossPayType) === t;
+                  return (
+                    <button key={t} type="button"
+                      onClick={() => country === 'US' ? updateUS('grossPayType', t) : updateCA('grossPayType', t)}
+                      className="flex-1 py-2.5 text-sm font-medium transition-colors focus:outline-none"
+                      style={active ? { backgroundColor: '#1C1917', color: '#FFFFFF' } : { backgroundColor: '#FFFFFF', color: '#78716C' }}
+                    >
+                      {t === 'annual' ? 'Annual Salary' : 'Per Paycheck'}
+                    </button>
+                  );
+                })}
               </div>
+            </div>
 
+            {/* Main inputs grid */}
+            <div className="grid gap-4 sm:grid-cols-2">
               <NumberInput
                 id="grossPay"
-                label={`${(country === 'US' ? usInput.grossPayType : caInput.grossPayType) === 'annual' ? 'Annual' : 'Per Paycheck'} Gross (${country === 'US' ? 'USD' : 'CAD'})`}
+                label={`${(country === 'US' ? usInput.grossPayType : caInput.grossPayType) === 'annual' ? 'Annual Gross' : 'Per Paycheck Gross'} (${country === 'US' ? 'USD' : 'CAD'})`}
                 value={country === 'US' ? usInput.grossPay : caInput.grossPay}
                 onChange={(v) => country === 'US' ? updateUS('grossPay', v) : updateCA('grossPay', v)}
-                prefix="$"
-                error={error}
+                prefix="$" error={error}
               />
-
-              <PayPeriodSelector
-                value={country === 'US' ? usInput.payFrequency : caInput.payFrequency}
-                onChange={(v) => country === 'US' ? updateUS('payFrequency', v) : updateCA('payFrequency', v)}
-              />
-
+              <div className="flex flex-col">
+                <label htmlFor="payFreq" className={labelBase}>Pay Frequency</label>
+                <PayPeriodSelector
+                  value={country === 'US' ? usInput.payFrequency : caInput.payFrequency}
+                  onChange={(v) => country === 'US' ? updateUS('payFrequency', v) : updateCA('payFrequency', v)}
+                />
+              </div>
               {country === 'US' ? (
                 <>
-                  <FilingStatusSelector value={usInput.filingStatus} onChange={(v) => updateUS('filingStatus', v as FilingStatus)} />
-                  <StateSelector value={usInput.state} onChange={(v) => updateUS('state', v)} />
+                  <div className="flex flex-col">
+                    <label className={labelBase}>Filing Status</label>
+                    <FilingStatusSelector value={usInput.filingStatus} onChange={(v) => updateUS('filingStatus', v as FilingStatus)} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className={labelBase}>State</label>
+                    <StateSelector value={usInput.state} onChange={(v) => updateUS('state', v)} />
+                  </div>
                 </>
               ) : (
-                <ProvinceSelector value={caInput.province} onChange={(v) => updateCA('province', v)} />
+                <div className="flex flex-col">
+                  <label className={labelBase}>Province</label>
+                  <ProvinceSelector value={caInput.province} onChange={(v) => updateCA('province', v)} />
+                </div>
               )}
             </div>
-          </section>
 
-          {/* ── Pre-tax deductions ── */}
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-            <h2 className="mb-4 text-base font-semibold text-gray-900">Pre-Tax Deductions</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {country === 'US' ? (
-                <>
-                  <NumberInput id="k401" label="Traditional 401(k) (annual)" value={usInput.preTaxDeductions.traditional401k} onChange={(v) => updateUSPreTax('traditional401k', v)} prefix="$" />
-                  <NumberInput id="health" label="Health Insurance (annual)" value={usInput.preTaxDeductions.healthInsurance} onChange={(v) => updateUSPreTax('healthInsurance', v)} prefix="$" />
-                  <NumberInput id="hsa" label="HSA Contribution (annual)" value={usInput.preTaxDeductions.hsa} onChange={(v) => updateUSPreTax('hsa', v)} prefix="$" />
-                  <NumberInput id="fsa" label="FSA Contribution (annual)" value={usInput.preTaxDeductions.fsa} onChange={(v) => updateUSPreTax('fsa', v)} prefix="$" />
-                  <NumberInput id="otherPreTax" label="Other Pre-Tax (annual)" value={usInput.preTaxDeductions.other} onChange={(v) => updateUSPreTax('other', v)} prefix="$" />
-                </>
-              ) : (
-                <>
-                  <NumberInput id="rrsp" label="RRSP Contribution (annual)" value={caInput.preTaxDeductions.rrsp} onChange={(v) => updateCAPreTax('rrsp', v)} prefix="$" />
-                  <NumberInput id="groupBenefits" label="Group Benefits / Health (annual)" value={caInput.preTaxDeductions.groupBenefits} onChange={(v) => updateCAPreTax('groupBenefits', v)} prefix="$" />
-                  <NumberInput id="pensionContrib" label="Pension Contributions (annual)" value={caInput.preTaxDeductions.pensionContrib} onChange={(v) => updateCAPreTax('pensionContrib', v)} prefix="$" />
-                  <NumberInput id="otherPreTaxCA" label="Other Pre-Tax (annual)" value={caInput.preTaxDeductions.other} onChange={(v) => updateCAPreTax('other', v)} prefix="$" />
-                </>
+            {/* Pre-tax deductions */}
+            <div>
+              <p className={`${labelBase} flex items-center gap-2`}>
+                <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: '#C17F3E' }} />
+                Pre-Tax Deductions <span className="normal-case font-normal text-muted">(annual)</span>
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2 mt-2">
+                {country === 'US' ? (
+                  <>
+                    <NumberInput id="k401" label="Traditional 401(k)" value={usInput.preTaxDeductions.traditional401k} onChange={(v) => updateUSPreTax('traditional401k', v)} prefix="$" />
+                    <NumberInput id="health" label="Health Insurance" value={usInput.preTaxDeductions.healthInsurance} onChange={(v) => updateUSPreTax('healthInsurance', v)} prefix="$" />
+                    <NumberInput id="hsa" label="HSA Contribution" value={usInput.preTaxDeductions.hsa} onChange={(v) => updateUSPreTax('hsa', v)} prefix="$" />
+                    <NumberInput id="fsa" label="FSA Contribution" value={usInput.preTaxDeductions.fsa} onChange={(v) => updateUSPreTax('fsa', v)} prefix="$" />
+                    <NumberInput id="otherPreTax" label="Other Pre-Tax" value={usInput.preTaxDeductions.other} onChange={(v) => updateUSPreTax('other', v)} prefix="$" />
+                  </>
+                ) : (
+                  <>
+                    <NumberInput id="rrsp" label="RRSP Contribution" value={caInput.preTaxDeductions.rrsp} onChange={(v) => updateCAPreTax('rrsp', v)} prefix="$" />
+                    <NumberInput id="groupBenefits" label="Group Benefits / Health" value={caInput.preTaxDeductions.groupBenefits} onChange={(v) => updateCAPreTax('groupBenefits', v)} prefix="$" />
+                    <NumberInput id="pensionContrib" label="Pension Contributions" value={caInput.preTaxDeductions.pensionContrib} onChange={(v) => updateCAPreTax('pensionContrib', v)} prefix="$" />
+                    <NumberInput id="otherPreTaxCA" label="Other Pre-Tax" value={caInput.preTaxDeductions.other} onChange={(v) => updateCAPreTax('other', v)} prefix="$" />
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Advanced: post-tax + withholding */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setShowAdvanced(v => !v)}
+                className="flex items-center gap-2 text-sm transition-colors focus:outline-none"
+                style={{ color: '#78716C' }}
+              >
+                <p className={`${labelBase} flex items-center gap-2 mb-0`}>
+                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: '#4A5F6E' }} />
+                  Post-Tax &amp; Additional Withholding
+                </p>
+                <span className="ml-auto text-xs">{showAdvanced ? 'Hide' : 'Show advanced'}</span>
+              </button>
+              {showAdvanced && (
+                <div className="grid gap-3 sm:grid-cols-2 mt-3">
+                  {country === 'US' ? (
+                    <>
+                      <NumberInput id="roth401k" label="Roth 401(k)" value={usInput.postTaxDeductions.roth401k} onChange={(v) => updateUSPostTax('roth401k', v)} prefix="$" />
+                      <NumberInput id="otherPostTax" label="Other Post-Tax" value={usInput.postTaxDeductions.other} onChange={(v) => updateUSPostTax('other', v)} prefix="$" />
+                    </>
+                  ) : (
+                    <NumberInput id="otherPostTaxCA" label="Other Post-Tax" value={caInput.postTaxDeductions.other} onChange={(v) => setCAInput((p) => ({ ...p, postTaxDeductions: { other: v } }))} prefix="$" />
+                  )}
+                  <NumberInput id="addlFederal" label="Extra Federal Withholding / paycheck"
+                    value={country === 'US' ? usInput.additionalFederalWithholding : caInput.additionalFederalWithholding}
+                    onChange={(v) => country === 'US' ? updateUS('additionalFederalWithholding', v) : updateCA('additionalFederalWithholding', v)}
+                    prefix="$" />
+                  <NumberInput id="addlProv" label={`Extra ${country === 'US' ? 'State' : 'Provincial'} Withholding / paycheck`}
+                    value={country === 'US' ? usInput.additionalStateWithholding : caInput.additionalProvincialWithholding}
+                    onChange={(v) => country === 'US' ? updateUS('additionalStateWithholding', v) : updateCA('additionalProvincialWithholding', v)}
+                    prefix="$" />
+                </div>
               )}
             </div>
-          </section>
-
-          {/* ── Post-tax deductions ── */}
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-            <h2 className="mb-4 text-base font-semibold text-gray-900">Post-Tax Deductions</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {country === 'US' ? (
-                <>
-                  <NumberInput id="roth401k" label="Roth 401(k) (annual)" value={usInput.postTaxDeductions.roth401k} onChange={(v) => updateUSPostTax('roth401k', v)} prefix="$" />
-                  <NumberInput id="otherPostTax" label="Other Post-Tax (annual)" value={usInput.postTaxDeductions.other} onChange={(v) => updateUSPostTax('other', v)} prefix="$" />
-                </>
-              ) : (
-                <NumberInput id="otherPostTaxCA" label="Other Post-Tax (annual)" value={caInput.postTaxDeductions.other} onChange={(v) => setCAInput((p) => ({ ...p, postTaxDeductions: { other: v } }))} prefix="$" />
-              )}
-            </div>
-          </section>
-
-          {/* ── Additional withholding ── */}
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-            <h2 className="mb-4 text-base font-semibold text-gray-900">Additional Withholding</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <NumberInput
-                id="addlFederal" label="Additional Federal (per paycheck)"
-                value={country === 'US' ? usInput.additionalFederalWithholding : caInput.additionalFederalWithholding}
-                onChange={(v) => country === 'US' ? updateUS('additionalFederalWithholding', v) : updateCA('additionalFederalWithholding', v)}
-                prefix="$"
-              />
-              <NumberInput
-                id="addlProv"
-                label={`Additional ${country === 'US' ? 'State' : 'Provincial'} (per paycheck)`}
-                value={country === 'US' ? usInput.additionalStateWithholding : caInput.additionalProvincialWithholding}
-                onChange={(v) => country === 'US'
-                  ? updateUS('additionalStateWithholding', v)
-                  : updateCA('additionalProvincialWithholding', v)}
-                prefix="$"
-              />
-            </div>
-          </section>
+          </div>
         </div>
 
-        {/* ── Right: results ── */}
-        <div className="space-y-4">
-          <div className="hidden w-full md:block">
-            <ins
-              className="adsbygoogle"
-              style={{ display: 'block' }}
-              data-ad-client="ca-pub-8870870806520160"
-              data-ad-slot="sidebar"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            />
+        {/* ── PHASE 3: RESULTS ── */}
+        <div className="overflow-hidden rounded-2xl bg-white shadow-sm" style={{ border: '1px solid #E2DDD6' }}>
+          <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #4A5F6E' }}>
+            <span className="phase-label text-phase3">Phase 3 · Your Take-Home</span>
           </div>
-          {result ? (
-            <>
-              <ResultCard result={result} payFrequency={country === 'US' ? usInput.payFrequency : caInput.payFrequency} locationLabel={locationLabel} />
-              <TaxBreakdownTable result={result} />
-            </>
-          ) : (
-            <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-gray-200 bg-white p-8 text-center text-gray-400 shadow-sm">
-              Enter your salary information to see your take-home pay.
-            </div>
-          )}
+          <div className="px-6 py-5">
+            {result ? (
+              <>
+                <ResultCard result={result} payFrequency={country === 'US' ? usInput.payFrequency : caInput.payFrequency} locationLabel={locationLabel} />
+                <TaxBreakdownTable result={result} />
+              </>
+            ) : (
+              <div className="flex min-h-[300px] items-center justify-center text-center" style={{ color: '#A8A29E' }}>
+                <div>
+                  <p className="text-4xl mb-3">$—</p>
+                  <p className="text-sm">Enter your salary to see take-home pay</p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <div className="mx-auto mt-8 max-w-[728px]">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-8870870806520160"
-          data-ad-slot="in-content"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+        <ins className="adsbygoogle" style={{ display: 'block' }}
+          data-ad-client="ca-pub-8870870806520160" data-ad-slot="in-content"
+          data-ad-format="auto" data-full-width-responsive="true" />
       </div>
     </div>
   );

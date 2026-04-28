@@ -49,14 +49,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+      <body className="min-h-screen antialiased" style={{ backgroundColor: '#EDEAE3', color: '#1C1917' }}>
         <NavHeader />
 
-        <main className="mx-auto max-w-6xl px-4 py-8">
+        <main className="mx-auto max-w-6xl px-4 py-10">
           {children}
         </main>
 
-        <footer className="mt-16 border-t border-gray-200 bg-white">
+        <footer className="mt-20 border-t" style={{ borderColor: '#D6D1C8' }}>
           <div className="mx-auto max-w-6xl px-4 py-8">
             <div className="mx-auto mb-6 max-w-[728px]">
               <ins
@@ -68,17 +68,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 data-full-width-responsive="true"
               />
             </div>
-            <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500">
-              <p>© {new Date().getFullYear()} PaycheckTaxCalc. For informational purposes only.</p>
+            <div className="flex flex-wrap items-center justify-between gap-4 text-sm" style={{ color: '#78716C' }}>
+              <p>© {new Date().getFullYear()} PaycheckTaxCalc · Built for clarity, not advice.</p>
               <nav aria-label="Footer navigation">
-                <ul className="flex gap-4 list-none">
-                  <li><a href="/privacy" className="hover:text-blue-700">Privacy Policy</a></li>
-                  <li><a href="/faq" className="hover:text-blue-700">FAQ</a></li>
-                  <li><a href="/how-it-works" className="hover:text-blue-700">Methodology</a></li>
+                <ul className="flex gap-5 list-none">
+                  <li><a href="/how-it-works" className="hover:text-ink transition-colors">Methodology</a></li>
+                  <li><a href="/privacy" className="hover:text-ink transition-colors">Privacy</a></li>
+                  <li><a href="/faq" className="hover:text-ink transition-colors">FAQ</a></li>
                 </ul>
               </nav>
             </div>
-            <p className="mt-3 text-xs text-gray-400">
+            <p className="mt-3 text-xs" style={{ color: '#A8A29E' }}>
               Tax information is based on 2026 IRS guidelines and state revenue department rules.
               Always consult a qualified tax professional for advice specific to your situation.
             </p>

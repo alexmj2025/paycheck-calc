@@ -8,9 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        canvas: '#EDEAE3',
+        ink: '#1C1917',
+        muted: '#78716C',
+        border: '#E2DDD6',
+        phase1: '#C17F3E',
+        phase2: '#B5533C',
+        phase3: '#4A5F6E',
       },
     },
   },

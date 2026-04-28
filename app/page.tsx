@@ -54,194 +54,135 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-        Paycheck Tax Calculator 2026
-      </h1>
-      <p className="mb-8 text-gray-600">
-        Free take-home pay calculator for all 50 US states and all 10 Canadian provinces.
-        Covers federal, state/provincial, and payroll taxes with <strong>2026</strong> tax brackets.
-      </p>
+      {/* Hero */}
+      <div className="mb-10 text-center">
+        <p className="phase-label text-muted mb-3">Tax Year 2026 · Updated April 2026</p>
+        <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl" style={{ color: '#1C1917' }}>
+          Paycheck tax<br />calculator, made plain.
+        </h1>
+        <p className="mt-4 mx-auto max-w-xl text-base" style={{ color: '#78716C' }}>
+          Free take-home pay calculator for all 50 US states and all 10 Canadian provinces.
+          Covers federal, state/provincial, and payroll taxes with 2026 brackets. Calculations run entirely in your browser — nothing is sent to a server.
+        </p>
+      </div>
 
       <Calculator />
 
       <AffiliateCTA />
       <EmailCapture />
 
-      {/* ── SEO content ── */}
-      <section className="mt-16 space-y-12 text-gray-700">
-
-        {/* How to use */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">How to use this calculator</h2>
-          <p className="leading-relaxed">
-            Enter your gross salary as an annual amount or per paycheck, select your pay frequency, choose your
-            filing status, and pick your state or province. The calculator shows your estimated take-home pay
-            instantly along with a full annual breakdown.
-          </p>
-          <p className="mt-3 leading-relaxed">
-            For a more precise result, fill in the pre-tax deductions section. Contributions to a traditional
-            401(k), health insurance premiums, HSA and FSA contributions (US), or RRSP and group benefits (Canada)
-            all reduce your taxable income before taxes are calculated.
-          </p>
-          <p className="mt-3 leading-relaxed">
-            Switch between the 🇺🇸 US and 🇨🇦 Canada tabs to calculate for either country.
-          </p>
+      {/* ── Phase 2: The Mechanics ── */}
+      <section className="mt-12 overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
+        <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
+          <span className="phase-label text-phase2">Phase 2 · The Mechanics</span>
         </div>
+        <div className="px-8 py-7 space-y-8" style={{ color: '#44403C' }}>
 
-        {/* US taxes */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">How paycheck taxes work in the US</h2>
-          <p className="leading-relaxed">
-            Every paycheck is subject to several layers of taxation. <strong>Federal income tax</strong> is
-            calculated using progressive brackets — you pay a lower rate on the first dollars of income and a
-            higher rate only on income above each threshold. In 2026, rates range from 10% (on income up to
-            $12,400 for single filers) to 37% (on income above $640,600).
-          </p>
-          <p className="mt-3 leading-relaxed">
-            <strong>FICA taxes</strong> cover Social Security and Medicare. You pay 6.2% of your wages toward
-            Social Security on the first $184,500 of earnings (2026), and 1.45% toward Medicare on all wages.
-            High earners pay an additional 0.9% Medicare surtax on wages above $200,000 (single) or $250,000
-            (married filing jointly).
-          </p>
-          <p className="mt-3 leading-relaxed">
-            <strong>State income tax</strong> varies widely. Nine states — Alaska, Florida, Nevada, New Hampshire,
-            South Dakota, Tennessee, Texas, Washington, and Wyoming — levy no state income tax at all. Most other
-            states use progressive brackets similar to the federal system, though rates and thresholds differ
-            significantly.
-          </p>
-          <div className="mt-4 rounded-lg bg-gray-50 p-4 text-sm">
-            <p className="font-medium text-gray-900">Example: $60,000 salary, Texas (no state tax), single, bi-weekly (2026)</p>
-            <ul className="mt-2 list-inside list-disc space-y-1 leading-relaxed">
-              <li>Annual gross: $60,000 | Per paycheck: $2,307.69</li>
-              <li>Federal taxable income: $60,000 − $16,100 (std. deduction) = $43,900</li>
-              <li>Federal tax: 10% × $12,400 + 12% × $31,500 = $1,240 + $3,780 = <strong>$5,020/yr</strong></li>
-              <li>Social Security: 6.2% × $60,000 = <strong>$3,720/yr</strong></li>
-              <li>Medicare: 1.45% × $60,000 = <strong>$870/yr</strong></li>
-              <li>State tax: <strong>$0</strong> (Texas)</li>
-              <li>Total taxes: $9,610/yr → Net annual: $50,390 → <strong>~$1,938 per paycheck</strong></li>
-            </ul>
+          <div>
+            <h2 className="text-xl font-semibold mb-3" style={{ color: '#1C1917' }}>How to use this calculator</h2>
+            <p className="leading-relaxed text-sm">
+              Enter your gross salary as an annual amount or per paycheck, select your pay frequency, choose your
+              filing status, and pick your state or province. For a more precise result, fill in the pre-tax
+              deductions — 401(k), health insurance, HSA and FSA (US), or RRSP and group benefits (Canada) —
+              to see how each one shifts your net.
+            </p>
           </div>
-        </div>
 
-        {/* US brackets table */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">2026 Federal Income Tax Brackets</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 text-sm">
-              <thead className="bg-blue-50">
-                <tr>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Rate</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Single</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Married Filing Jointly</th>
-                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold">Head of Household</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {[
-                  ['10%', '$0 – $12,400', '$0 – $24,800', '$0 – $18,600'],
-                  ['12%', '$12,401 – $50,400', '$24,801 – $100,800', '$18,601 – $75,600'],
-                  ['22%', '$50,401 – $105,700', '$100,801 – $211,400', '$75,601 – $158,550'],
-                  ['24%', '$105,701 – $201,775', '$211,401 – $403,550', '$158,551 – $302,650'],
-                  ['32%', '$201,776 – $256,225', '$403,551 – $512,450', '$302,651 – $384,325'],
-                  ['35%', '$256,226 – $640,600', '$512,451 – $768,700', '$384,326 – $704,650'],
-                  ['37%', '$640,601+', '$768,701+', '$704,651+'],
-                ].map(([rate, single, mfj, hoh]) => (
-                  <tr key={rate} className="even:bg-gray-50">
-                    <td className="border border-gray-200 px-4 py-2 font-medium text-blue-700">{rate}</td>
-                    <td className="border border-gray-200 px-4 py-2">{single}</td>
-                    <td className="border border-gray-200 px-4 py-2">{mfj}</td>
-                    <td className="border border-gray-200 px-4 py-2">{hoh}</td>
+          <div>
+            <h2 className="text-xl font-semibold mb-3" style={{ color: '#1C1917' }}>How paycheck taxes work in the US</h2>
+            <p className="leading-relaxed text-sm">
+              <strong>Federal income tax</strong> uses progressive brackets — you pay a lower rate on your first dollars
+              and a higher rate only on income above each threshold. In 2026, rates range from 10% (up to $12,400 single)
+              to 37% (above $640,600).
+            </p>
+            <p className="mt-3 leading-relaxed text-sm">
+              <strong>FICA taxes</strong> cover Social Security (6.2% on the first $184,500) and Medicare (1.45% on all wages).
+              High earners pay an additional 0.9% Medicare surtax above $200K single / $250K MFJ.
+            </p>
+            <p className="mt-3 leading-relaxed text-sm">
+              <strong>State income tax</strong> varies widely — nine states levy none at all, while others use progressive
+              brackets or flat rates.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-4" style={{ color: '#1C1917' }}>2026 Federal Income Tax Brackets</h2>
+            <div className="overflow-x-auto rounded-xl" style={{ border: '1px solid #E2DDD6' }}>
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr style={{ borderBottom: '1px solid #E2DDD6' }}>
+                    {['Rate', 'Single', 'Married · Joint', 'Head of Household'].map(h => (
+                      <th key={h} className="px-4 py-3 text-left phase-label text-muted font-normal">{h}</th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {[
+                    ['10%', '$0 – $12,400', '$0 – $24,800', '$0 – $18,600'],
+                    ['12%', '$12,401 – $50,400', '$24,801 – $100,800', '$18,601 – $75,600'],
+                    ['22%', '$50,401 – $105,700', '$100,801 – $211,400', '$75,601 – $158,550'],
+                    ['24%', '$105,701 – $201,775', '$211,401 – $403,550', '$158,551 – $302,650'],
+                    ['32%', '$201,776 – $256,225', '$403,551 – $512,450', '$302,651 – $384,325'],
+                    ['35%', '$256,226 – $640,600', '$512,451 – $768,700', '$384,326 – $704,650'],
+                    ['37%', '$640,601+', '$768,701+', '$704,651+'],
+                  ].map(([rate, single, mfj, hoh]) => (
+                    <tr key={rate} style={{ borderBottom: '1px solid #F0EDE7' }}>
+                      <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
+                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{single}</td>
+                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{mfj}</td>
+                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{hoh}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 text-xs" style={{ color: '#A8A29E' }}>
+              Standard deductions (2026): Single $16,100 · MFJ $32,200 · HoH $24,150. SS wage base: $184,500. Source: IRS Rev. Proc. 2025-32.
+            </p>
           </div>
-          <p className="mt-2 text-sm text-gray-500">
-            Standard deductions (2026): Single $16,100 · Married filing jointly $32,200 · Head of household $24,150.
-            Social Security wage base: $184,500. Source: IRS Rev. Proc. 2025-32.
-          </p>
 
-        </div>
-
-        {/* No income tax states */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">States with No Income Tax</h2>
-          <p className="leading-relaxed">
-            Nine states levy no individual income tax on wages: <strong>Alaska, Florida, Nevada, New Hampshire,
-            South Dakota, Tennessee, Texas, Washington,</strong> and <strong>Wyoming</strong>. New Hampshire taxes
-            investment income but not earned wages.
-          </p>
-          <p className="mt-3 leading-relaxed">
-            A worker earning $75,000 in California might pay $4,000–$6,000 more in state taxes annually than the
-            same worker in Texas. However, no-income-tax states often offset this through higher property taxes or
-            sales taxes — the total burden depends on your full financial picture.
-          </p>
-        </div>
-
-        {/* Canada section */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">How Canadian paycheck taxes work</h2>
-          <p className="leading-relaxed">
-            Every Canadian paycheck is subject to four main deductions: <strong>federal income tax</strong> (15%–33%
-            on progressive brackets), <strong>CPP contributions</strong> (5.95% on earnings between $3,500 and
-            $74,600 YMPE in 2026), <strong>EI premiums</strong> (1.63% up to $68,900), and{' '}
-            <strong>provincial income tax</strong> at each province&apos;s own rates.
-          </p>
-          <p className="mt-3 leading-relaxed">
-            The federal Basic Personal Amount of $16,452 (2026) generates a 15% non-refundable credit, effectively
-            sheltering the first ~$16,452 of income from federal tax. Quebec workers pay QPP (6.4%) instead of CPP
-            and QPIP (0.494%) in addition to a reduced EI rate. Pre-tax deductions like RRSP contributions and
-            group benefits reduce your taxable income for both federal and provincial purposes.
-          </p>
-          <p className="mt-3 leading-relaxed">
-            Alberta is the most tax-friendly province with a 10% flat rate up to $148,269 and a BPA of $21,003.
-            Ontario applies a provincial surtax on higher earners. Use the calculator above — switch to 🇨🇦 Canada
-            and select your province to see your exact take-home pay.
-          </p>
-        </div>
-
-        {/* FAQ */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
-          <FaqAccordion items={FAQ_ITEMS} />
-        </div>
-
-        {/* US state links */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Calculate your take-home pay by state
-          </h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-            {topStateLinks.map((state) => (
-              <a
-                key={state.abbreviation}
-                href={`/${state.slug}`}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-blue-700 hover:bg-blue-50 hover:border-blue-300 transition-colors"
-              >
-                {state.name}
-              </a>
-            ))}
+          {/* FAQ accordion */}
+          <div>
+            <h2 className="text-xl font-semibold mb-4" style={{ color: '#1C1917' }}>Frequently Asked Questions</h2>
+            <FaqAccordion items={FAQ_ITEMS} />
           </div>
+
+        </div>
+      </section>
+
+      <AffiliateCTA />
+      <EmailCapture />
+
+      {/* State + Province links */}
+      <section className="mt-16">
+        <p className="phase-label text-muted mb-2">By Location</p>
+        <h2 className="text-3xl font-bold mb-6" style={{ color: '#1C1917' }}>Calculate your take-home pay by state</h2>
+        <div className="flex flex-wrap gap-2">
+          {topStateLinks.map((state) => (
+            <a
+              key={state.abbreviation}
+              href={`/${state.slug}`}
+              className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+            >
+              {state.name}
+            </a>
+          ))}
         </div>
 
-        {/* Canada province links */}
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">
-            Calculate by Canadian province
-          </h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-            {PROVINCES.map((p) => (
-              <a
-                key={p.abbreviation}
-                href={`/canada/${p.slug}`}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-blue-700 hover:bg-blue-50 hover:border-blue-300 transition-colors"
-              >
-                {p.name}
-              </a>
-            ))}
-          </div>
+        <h2 className="text-3xl font-bold mt-10 mb-6" style={{ color: '#1C1917' }}>Calculate by Canadian province</h2>
+        <div className="flex flex-wrap gap-2">
+          {PROVINCES.map((p) => (
+            <a
+              key={p.abbreviation}
+              href={`/canada/${p.slug}`}
+              className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+            >
+              {p.name}
+            </a>
+          ))}
         </div>
-
       </section>
     </div>
   );
