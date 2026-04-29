@@ -4,6 +4,7 @@ import EmailCapture from '@/components/EmailCapture';
 import FaqAccordion from '@/components/FaqAccordion';
 import { STATES } from '@/lib/stateData';
 import { PROVINCES } from '@/lib/provinceData';
+import { UK_REGIONS } from '@/lib/ukRegionData';
 
 const TOP_STATES = [
   'CA', 'TX', 'FL', 'NY', 'PA', 'IL', 'OH', 'GA', 'NC', 'MI',
@@ -47,6 +48,10 @@ const FAQ_ITEMS = [
     q: 'How does the Canadian paycheck calculator work?',
     a: 'For Canadian paychecks, the calculator deducts federal income tax (15%–33%), CPP contributions (5.95% up to $74,600 YMPE in 2026), EI premiums (1.63% up to $68,900), and provincial income tax. Quebec workers pay QPP (6.4%) and QPIP (0.494%) instead of CPP. RRSP contributions and group benefits reduce your taxable income. Switch to Canada using the 🇨🇦 button in the calculator.',
   },
+  {
+    q: 'How does the UK paycheck calculator work?',
+    a: 'For UK paychecks, the calculator deducts Income Tax (20%–45% in England/Wales/NI; 19%–48% in Scotland) above the £12,570 Personal Allowance, and National Insurance Class 1 (8% on £12,570–£50,270, then 2% above). Pension salary sacrifice contributions reduce both Income Tax and NI. Student Loan repayments are also supported for Plans 1, 2, 4, and postgraduate loans. Switch to the UK using the 🇬🇧 button in the calculator.',
+  },
 ];
 
 export default function HomePage() {
@@ -61,8 +66,8 @@ export default function HomePage() {
           Paycheck tax<br />calculator, made plain.
         </h1>
         <p className="mt-4 mx-auto max-w-xl text-base" style={{ color: '#78716C' }}>
-          Free take-home pay calculator for all 50 US states and all 10 Canadian provinces.
-          Covers federal, state/provincial, and payroll taxes with 2026 brackets. Calculations run entirely in your browser — nothing is sent to a server.
+          Free take-home pay calculator for all 50 US states, all 10 Canadian provinces, and the United Kingdom.
+          Covers federal, state/provincial, and payroll taxes. Calculations run entirely in your browser — nothing is sent to a server.
         </p>
       </div>
 
@@ -180,6 +185,20 @@ export default function HomePage() {
               style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
             >
               {p.name}
+            </a>
+          ))}
+        </div>
+
+        <h2 className="text-3xl font-bold mt-10 mb-6" style={{ color: '#1C1917' }}>Calculate by UK region</h2>
+        <div className="flex flex-wrap gap-2">
+          {UK_REGIONS.map((r) => (
+            <a
+              key={r.abbreviation}
+              href={`/uk/${r.slug}`}
+              className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+            >
+              {r.name}
             </a>
           ))}
         </div>

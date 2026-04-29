@@ -84,7 +84,7 @@ export interface TaxResult {
   payPeriodsPerYear: number;
   federalTaxableIncome: number;
   stateTaxableIncome: number;
-  currency: 'USD' | 'CAD';
+  currency: 'USD' | 'CAD' | 'GBP';
 }
 
 function calcBracketTax(income: number, brackets: TaxBracket[]): number {
@@ -223,8 +223,9 @@ export function calculateTax(input: TaxInput): TaxResult {
   };
 }
 
-export function formatCurrency(amount: number, currency: 'USD' | 'CAD' = 'USD'): string {
-  return new Intl.NumberFormat('en-US', {
+export function formatCurrency(amount: number, currency: 'USD' | 'CAD' | 'GBP' = 'USD'): string {
+  const locale = currency === 'GBP' ? 'en-GB' : 'en-US';
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,
     minimumFractionDigits: 2,
