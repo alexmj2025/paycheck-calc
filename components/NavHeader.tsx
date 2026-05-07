@@ -8,8 +8,10 @@ export default function NavHeader() {
   const links = [
     { href: '/', label: 'Calculator' },
     { href: '/canada', label: 'Canada' },
+    { href: '/uk', label: 'UK' },
+    { href: '/blog', label: 'Blog' },
     { href: '/how-it-works', label: 'How It Works' },
-    { href: '/faq', label: 'FAQ' },
+    { href: '/about', label: 'About' },
   ];
 
   return (

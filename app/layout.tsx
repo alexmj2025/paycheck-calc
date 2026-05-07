@@ -65,10 +65,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm" style={{ color: '#78716C' }}>
               <p>© {new Date().getFullYear()} PaycheckTaxCalc · Built for clarity, not advice.</p>
               <nav aria-label="Footer navigation">
-                <ul className="flex gap-5 list-none">
+                <ul className="flex flex-wrap gap-5 list-none">
+                  <li><a href="/blog" className="hover:text-ink transition-colors">Blog</a></li>
+                  <li><a href="/glossary" className="hover:text-ink transition-colors">Glossary</a></li>
                   <li><a href="/how-it-works" className="hover:text-ink transition-colors">Methodology</a></li>
-                  <li><a href="/privacy" className="hover:text-ink transition-colors">Privacy</a></li>
                   <li><a href="/faq" className="hover:text-ink transition-colors">FAQ</a></li>
+                  <li><a href="/about" className="hover:text-ink transition-colors">About</a></li>
+                  <li><a href="/contact" className="hover:text-ink transition-colors">Contact</a></li>
+                  <li><a href="/privacy" className="hover:text-ink transition-colors">Privacy</a></li>
                 </ul>
               </nav>
             </div>
