@@ -61,7 +61,7 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <div className="mb-10 text-center">
-        <p className="phase-label text-muted mb-3">Tax Year 2026 · Updated April 2026</p>
+        <p className="phase-label text-muted mb-3">Tax Year 2026 · Updated 2026</p>
         <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl" style={{ color: '#1C1917' }}>
           Paycheck tax<br />calculator, made plain.
         </h1>
@@ -81,11 +81,11 @@ export default function HomePage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label text-phase2">Phase 2 · The Mechanics</span>
         </div>
-        <div className="px-8 py-7 space-y-8" style={{ color: '#44403C' }}>
+        <div className="px-8 py-7 space-y-8" style={{ color: '#111111' }}>
 
           <div>
             <h2 className="text-xl font-semibold mb-3" style={{ color: '#1C1917' }}>How to use this calculator</h2>
-            <p className="leading-relaxed text-sm">
+            <p className="leading-relaxed">
               Enter your gross salary as an annual amount or per paycheck, select your pay frequency, choose your
               filing status, and pick your state or province. For a more precise result, fill in the pre-tax
               deductions — 401(k), health insurance, HSA and FSA (US), or RRSP and group benefits (Canada) —
@@ -95,16 +95,16 @@ export default function HomePage() {
 
           <div>
             <h2 className="text-xl font-semibold mb-3" style={{ color: '#1C1917' }}>How paycheck taxes work in the US</h2>
-            <p className="leading-relaxed text-sm">
+            <p className="leading-relaxed">
               <strong>Federal income tax</strong> uses progressive brackets — you pay a lower rate on your first dollars
               and a higher rate only on income above each threshold. In 2026, rates range from 10% (up to $12,400 single)
               to 37% (above $640,600).
             </p>
-            <p className="mt-3 leading-relaxed text-sm">
+            <p className="mt-3 leading-relaxed">
               <strong>FICA taxes</strong> cover Social Security (6.2% on the first $184,500) and Medicare (1.45% on all wages).
               High earners pay an additional 0.9% Medicare surtax above $200K single / $250K MFJ.
             </p>
-            <p className="mt-3 leading-relaxed text-sm">
+            <p className="mt-3 leading-relaxed">
               <strong>State income tax</strong> varies widely — nine states levy none at all, while others use progressive
               brackets or flat rates.
             </p>
@@ -123,26 +123,26 @@ export default function HomePage() {
                 </thead>
                 <tbody>
                   {[
-                    ['10%', '$0 – $12,400', '$0 – $24,800', '$0 – $18,600'],
-                    ['12%', '$12,401 – $50,400', '$24,801 – $100,800', '$18,601 – $75,600'],
-                    ['22%', '$50,401 – $105,700', '$100,801 – $211,400', '$75,601 – $158,550'],
-                    ['24%', '$105,701 – $201,775', '$211,401 – $403,550', '$158,551 – $302,650'],
-                    ['32%', '$201,776 – $256,225', '$403,551 – $512,450', '$302,651 – $384,325'],
-                    ['35%', '$256,226 – $640,600', '$512,451 – $768,700', '$384,326 – $704,650'],
-                    ['37%', '$640,601+', '$768,701+', '$704,651+'],
+                    ['10%', '$0 – $12,400', '$0 – $24,800', '$0 – $17,650'],
+                    ['12%', '$12,401 – $50,400', '$24,801 – $100,800', '$17,651 – $67,400'],
+                    ['22%', '$50,401 – $105,700', '$100,801 – $211,400', '$67,401 – $105,700'],
+                    ['24%', '$105,701 – $201,775', '$211,401 – $403,550', '$105,701 – $201,775'],
+                    ['32%', '$201,776 – $256,225', '$403,551 – $512,450', '$201,776 – $256,225'],
+                    ['35%', '$256,226 – $640,600', '$512,451 – $768,700', '$256,226 – $640,600'],
+                    ['37%', '$640,601+', '$768,701+', '$640,601+'],
                   ].map(([rate, single, mfj, hoh]) => (
                     <tr key={rate} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{single}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{mfj}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{hoh}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{single}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{mfj}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{hoh}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
             <p className="mt-2 text-xs" style={{ color: '#A8A29E' }}>
-              Standard deductions (2026): Single $16,100 · MFJ $32,200 · HoH $24,150. SS wage base: $184,500. Source: IRS Rev. Proc. 2025-32.
+              Standard deductions (2026): Single $15,750 · MFJ $31,500 · HoH $23,625. SS wage base: $184,500. Source: IRS Rev. Proc. 2025-32.
             </p>
           </div>
 
@@ -168,7 +168,7 @@ export default function HomePage() {
               key={state.abbreviation}
               href={`/${state.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {state.name}
             </a>
@@ -182,7 +182,7 @@ export default function HomePage() {
               key={p.abbreviation}
               href={`/canada/${p.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {p.name}
             </a>
@@ -196,7 +196,7 @@ export default function HomePage() {
               key={r.abbreviation}
               href={`/uk/${r.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {r.name}
             </a>

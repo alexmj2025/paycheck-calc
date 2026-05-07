@@ -19,7 +19,7 @@ export default function EffectiveMarginalArticle() {
           >
             Tax Concepts
           </span>
-          <span className="phase-label text-muted">April 28, 2026 · 6 min read</span>
+          <span className="phase-label text-muted">2026 · 6 min read</span>
         </div>
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl mb-4" style={{ color: '#1C1917' }}>
           Effective Tax Rate vs. Marginal Tax Rate: What&rsquo;s the Difference?
@@ -31,7 +31,7 @@ export default function EffectiveMarginalArticle() {
         </p>
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+      <div className="space-y-8 leading-relaxed" style={{ color: '#111111' }}>
 
         <section className="overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
           <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #4A5F6E' }}>
@@ -47,7 +47,7 @@ export default function EffectiveMarginalArticle() {
             </p>
             <p>
               When someone says &ldquo;I&rsquo;m in the 22% bracket,&rdquo; they mean the <em>next dollar</em> they earn will be
-              taxed at 22%. They do NOT mean all of their income is taxed at 22%. Their first $16,100 was
+              taxed at 22%. They do NOT mean all of their income is taxed at 22%. Their first $15,750 was
               taxed at 0% (standard deduction). The next slice at 10%. The next at 12%. And so on. The 22%
               rate only applies to the portion of income that fell into the 22% bracket.
             </p>
@@ -98,7 +98,7 @@ export default function EffectiveMarginalArticle() {
             <p>Let&rsquo;s walk through a single filer with a $90,000 gross salary in 2026.</p>
 
             <p><strong>Step 1: Apply the standard deduction</strong></p>
-            <p>Taxable income = $90,000 − $16,100 (standard deduction) = <strong>$73,900</strong></p>
+            <p>Taxable income = $90,000 − $15,750 (standard deduction) = <strong>$74,250</strong></p>
 
             <p><strong>Step 2: Apply brackets to taxable income</strong></p>
 
@@ -113,20 +113,20 @@ export default function EffectiveMarginalArticle() {
                 </thead>
                 <tbody>
                   {[
-                    ['10%', '$0 – $12,400', '10%', '$1,240'],
+                    ['10%', '$0 – $12,400 → $12,400', '10%', '$1,240'],
                     ['12%', '$12,401 – $50,400 → $38,000', '12%', '$4,560'],
-                    ['22%', '$50,401 – $73,900 → $23,500', '22%', '$5,170'],
+                    ['22%', '$50,401 – $74,250 → $23,850', '22%', '$5,247'],
                   ].map(([bracket, range, rate, tax]) => (
                     <tr key={bracket} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{bracket}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{range}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{rate}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{range}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{rate}</td>
                       <td className="px-4 py-3 font-medium" style={{ color: '#1C1917' }}>{tax}</td>
                     </tr>
                   ))}
                   <tr style={{ backgroundColor: '#F5F2ED' }}>
                     <td className="px-4 py-3 font-semibold" style={{ color: '#1C1917' }} colSpan={3}>Total Federal Income Tax</td>
-                    <td className="px-4 py-3 font-bold" style={{ color: '#1C1917' }}>$10,970</td>
+                    <td className="px-4 py-3 font-bold" style={{ color: '#1C1917' }}>$11,047</td>
                   </tr>
                 </tbody>
               </table>
@@ -135,12 +135,12 @@ export default function EffectiveMarginalArticle() {
             <p><strong>Step 3: Calculate both rates</strong></p>
             <div className="space-y-2 pl-4">
               <p><strong>Marginal rate:</strong> 22% (this person is in the 22% bracket)</p>
-              <p><strong>Effective rate:</strong> $10,970 ÷ $90,000 = <strong>12.2%</strong></p>
+              <p><strong>Effective rate:</strong> $11,047 ÷ $90,000 = <strong>12.3%</strong></p>
             </div>
 
             <p>
-              So while this person is &ldquo;in the 22% bracket,&rdquo; they only pay an average of 12.2% of their
-              total income in federal income tax. That gap between 22% and 12.2% is the result of the
+              So while this person is &ldquo;in the 22% bracket,&rdquo; they only pay an average of 12.3% of their
+              total income in federal income tax. That gap between 22% and 12.3% is the result of the
               progressive system.
             </p>
           </div>
@@ -200,11 +200,11 @@ export default function EffectiveMarginalArticle() {
 
         {/* Quick tip */}
         <div
-          className="rounded-xl px-6 py-5 text-sm leading-relaxed"
+          className="rounded-xl px-6 py-5 leading-relaxed"
           style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6' }}
         >
           <p className="font-semibold mb-2" style={{ color: '#1C1917' }}>See both rates instantly</p>
-          <p style={{ color: '#44403C' }}>
+          <p style={{ color: '#111111' }}>
             Our <a href="/" className="underline" style={{ color: '#B5533C' }}>paycheck calculator</a> shows
             you both your effective and marginal federal tax rates automatically after you enter your income.
             It also breaks down federal, state, and FICA so you can see the full picture at once.
@@ -224,7 +224,7 @@ export default function EffectiveMarginalArticle() {
                 key={l.href}
                 href={l.href}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
               >
                 {l.label}
               </a>

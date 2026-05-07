@@ -28,7 +28,7 @@ function formatBracketTable(config: StateTaxConfig, stateName: string) {
           </thead>
           <tbody>
             <tr>
-              <td className="px-4 py-3" style={{ color: '#44403C' }}>All taxable income</td>
+              <td className="px-4 py-3" style={{ color: '#111111' }}>All taxable income</td>
               <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>
                 {(config.flatRate * 100).toFixed(2)}%
               </td>
@@ -55,7 +55,7 @@ function formatBracketTable(config: StateTaxConfig, stateName: string) {
           <tbody>
             {brackets.map((b, i) => (
               <tr key={i} style={{ borderBottom: '1px solid #F0EDE7' }}>
-                <td className="px-4 py-3" style={{ color: '#44403C' }}>
+                <td className="px-4 py-3" style={{ color: '#111111' }}>
                   {b.max === Infinity
                     ? `$${b.min.toLocaleString()}+`
                     : `$${b.min.toLocaleString()} – $${b.max.toLocaleString()}`}
@@ -172,7 +172,7 @@ export default function StatePage({ params }: Props) {
         <h1 className="text-2xl font-bold leading-tight sm:text-3xl mb-3" style={{ color: '#1C1917' }}>
           {stateInfo.name} Paycheck Tax Calculator 2026
         </h1>
-        <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>{intro}</p>
+        <p className="leading-relaxed" style={{ color: '#78716C' }}>{intro}</p>
       </div>
 
       <Calculator defaultState={stateInfo.abbreviation} />
@@ -185,13 +185,13 @@ export default function StatePage({ params }: Props) {
         <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label text-phase2">{stateInfo.name} Tax Details</span>
         </div>
-        <div className="px-6 py-6 space-y-8" style={{ color: '#44403C' }}>
+        <div className="px-6 py-6 space-y-8" style={{ color: '#111111' }}>
 
           <div>
             <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>
               How {stateInfo.name} paycheck taxes work
             </h2>
-            <div className="space-y-3 text-sm leading-relaxed">
+            <div className="space-y-3 leading-relaxed">
               {config.type === 'none' ? (
                 <>
                   <p>
@@ -200,7 +200,7 @@ export default function StatePage({ params }: Props) {
                   </p>
                   <p>
                     Federal income tax is calculated using 2026 progressive brackets ranging from 10% to 37%. The
-                    standard deduction ($16,100 for single filers, $32,200 for married filing jointly) is subtracted
+                    standard deduction ($15,750 for single filers, $31,500 for married filing jointly) is subtracted
                     from your gross income before brackets are applied.
                   </p>
                   <p>
@@ -225,7 +225,7 @@ export default function StatePage({ params }: Props) {
                   )}
                   <p>
                     Federal income tax is also withheld, using 2026 brackets from 10% to 37%. The federal standard
-                    deduction ($16,100 single, $32,200 MFJ) is separate from any {stateInfo.name} state deduction.
+                    deduction ($15,750 single, $31,500 MFJ) is separate from any {stateInfo.name} state deduction.
                   </p>
                 </>
               )}
@@ -243,7 +243,7 @@ export default function StatePage({ params }: Props) {
               {stateInfo.name} income tax brackets 2026
             </h2>
             {config.type === 'none' ? (
-              <p className="text-sm" style={{ color: '#44403C' }}>
+              <p className="text-sm" style={{ color: '#111111' }}>
                 {stateInfo.name} has no state income tax. Workers pay only federal income tax and FICA on their wages.
               </p>
             ) : (
@@ -253,7 +253,7 @@ export default function StatePage({ params }: Props) {
 
           <div>
             <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>How to use this calculator</h2>
-            <ol className="list-inside list-decimal space-y-2 text-sm leading-relaxed">
+            <ol className="list-inside list-decimal space-y-2 leading-relaxed">
               <li>Enter your gross salary as an annual amount or per paycheck.</li>
               <li>Select your pay frequency (weekly, bi-weekly, semi-monthly, monthly, or annually).</li>
               <li>Choose your filing status and confirm {stateInfo.name} is selected.</li>
@@ -283,7 +283,7 @@ export default function StatePage({ params }: Props) {
                   a: config.standardDeduction
                     ? `${stateInfo.name}'s standard deduction is $${config.standardDeduction.single.toLocaleString()} for single filers and $${config.standardDeduction.married.toLocaleString()} for married filing jointly (2026).`
                     : config.type === 'none'
-                    ? `${stateInfo.name} does not have a state income tax, so there is no ${stateInfo.name} standard deduction. The federal standard deduction ($16,100 single, $32,200 MFJ for 2026) still applies to your federal tax calculation.`
+                    ? `${stateInfo.name} does not have a state income tax, so there is no ${stateInfo.name} standard deduction. The federal standard deduction ($15,750 single, $31,500 MFJ for 2026) still applies to your federal tax calculation.`
                     : `${stateInfo.name} may offer a standard deduction or personal exemption that reduces your state taxable income. Check with the ${stateInfo.name} Department of Revenue for the current amount.`,
                 },
                 {
@@ -297,7 +297,7 @@ export default function StatePage({ params }: Props) {
               ].map(({ q, a }) => (
                 <div key={q}>
                   <h3 className="font-semibold text-sm" style={{ color: '#1C1917' }}>{q}</h3>
-                  <p className="mt-1 text-sm leading-relaxed" style={{ color: '#44403C' }}>{a}</p>
+                  <p className="mt-1 leading-relaxed" style={{ color: '#111111' }}>{a}</p>
                 </div>
               ))}
             </div>
@@ -317,7 +317,7 @@ export default function StatePage({ params }: Props) {
                 key={s.abbreviation}
                 href={`/${s.slug}`}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
               >
                 {s.name} Calculator
               </a>

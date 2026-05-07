@@ -80,13 +80,14 @@ export const FEDERAL_BRACKETS_BY_YEAR: Record<TaxYear, Record<FilingStatus, TaxB
       { min: 768700, max: Infinity, rate: 0.37 },
     ],
     head: [
-      { min: 0, max: 18600, rate: 0.10 },
-      { min: 18600, max: 75600, rate: 0.12 },
-      { min: 75600, max: 158550, rate: 0.22 },
-      { min: 158550, max: 302650, rate: 0.24 },
-      { min: 302650, max: 384325, rate: 0.32 },
-      { min: 384325, max: 704650, rate: 0.35 },
-      { min: 704650, max: Infinity, rate: 0.37 },
+      // 2025 HoH × ~3.97% COLA. Converges with Single at 22%/24% boundary.
+      { min: 0, max: 17650, rate: 0.10 },
+      { min: 17650, max: 67400, rate: 0.12 },
+      { min: 67400, max: 105700, rate: 0.22 },
+      { min: 105700, max: 201775, rate: 0.24 },
+      { min: 201775, max: 256225, rate: 0.32 },
+      { min: 256225, max: 640600, rate: 0.35 },
+      { min: 640600, max: Infinity, rate: 0.37 },
     ],
   },
 };
@@ -96,7 +97,7 @@ export const FEDERAL_BRACKETS = FEDERAL_BRACKETS_BY_YEAR[2026];
 
 export const FEDERAL_STANDARD_DEDUCTIONS_BY_YEAR: Record<TaxYear, Record<FilingStatus, number>> = {
   2025: { single: 15000, married: 30000, head: 22500 },
-  2026: { single: 16100, married: 32200, head: 24150 },
+  2026: { single: 15750, married: 31500, head: 23625 },
 };
 
 export const FEDERAL_STANDARD_DEDUCTIONS = FEDERAL_STANDARD_DEDUCTIONS_BY_YEAR[2026];

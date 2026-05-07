@@ -126,13 +126,20 @@ export function calculateTax(input: TaxInput): TaxResult {
   const annualFederalTax = calcBracketTax(federalTaxableIncome, FEDERAL_BRACKETS_BY_YEAR[year][input.filingStatus]);
 
   // Step 4 — FICA (year-specific SS wage base)
-  const ssWages = Math.min(annualGross, SOCIAL_SECURITY_WAGE_BASE_BY_YEAR[year]);
+  // Section 125 cafeteria plan benefits (health, HSA, FSA) are exempt from FICA.
+  // Traditional 401(k) is NOT exempt from FICA — only from income tax.
+  const section125 =
+    input.preTaxDeductions.healthInsurance +
+    input.preTaxDeductions.hsa +
+    input.preTaxDeductions.fsa;
+  const ficaWages = Math.max(0, annualGross - section125);
+  const ssWages = Math.min(ficaWages, SOCIAL_SECURITY_WAGE_BASE_BY_YEAR[year]);
   const annualSS = ssWages * SOCIAL_SECURITY_RATE;
-  const annualMedicare = annualGross * MEDICARE_RATE;
+  const annualMedicare = ficaWages * MEDICARE_RATE;
   const additionalMedicareThreshold = ADDITIONAL_MEDICARE_THRESHOLD[input.filingStatus];
   const annualAddlMedicare =
-    annualGross > additionalMedicareThreshold
-      ? (annualGross - additionalMedicareThreshold) * ADDITIONAL_MEDICARE_RATE
+    ficaWages > additionalMedicareThreshold
+      ? (ficaWages - additionalMedicareThreshold) * ADDITIONAL_MEDICARE_RATE
       : 0;
 
   // Step 5 — state income tax (apply 2025 overrides for states with confirmed rate changes)

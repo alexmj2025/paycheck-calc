@@ -101,7 +101,7 @@ const TERMS = [
   {
     term: 'Married Filing Jointly (MFJ)',
     definition:
-      'A filing status for married couples who combine their income and deductions on a single tax return. Provides the largest standard deduction ($32,200 in 2026) and the widest bracket thresholds.',
+      'A filing status for married couples who combine their income and deductions on a single tax return. Provides the largest standard deduction ($31,500 in 2026) and the widest bracket thresholds.',
   },
   {
     term: 'Medicare Tax',
@@ -166,7 +166,7 @@ const TERMS = [
   {
     term: 'Standard Deduction',
     definition:
-      'A fixed dollar amount that reduces your taxable income before tax brackets are applied. In 2026: $16,100 (Single), $32,200 (Married Filing Jointly), $24,150 (Head of Household). Most taxpayers take the standard deduction rather than itemizing.',
+      'A fixed dollar amount that reduces your taxable income before tax brackets are applied. In 2026: $15,750 (Single), $31,500 (Married Filing Jointly), $23,625 (Head of Household). Most taxpayers take the standard deduction rather than itemizing.',
   },
   {
     term: 'Student Loan Repayment (UK)',
@@ -234,7 +234,7 @@ export default function GlossaryPage() {
             key={l}
             href={`#letter-${l}`}
             className="w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium transition-colors"
-            style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+            style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
           >
             {l}
           </a>
@@ -259,7 +259,7 @@ export default function GlossaryPage() {
                   style={{ border: '1px solid #E2DDD6' }}
                 >
                   <dt className="font-semibold mb-1.5" style={{ color: '#1C1917' }}>{item.term}</dt>
-                  <dd className="text-sm leading-relaxed" style={{ color: '#44403C' }}>{item.definition}</dd>
+                  <dd className="leading-relaxed" style={{ color: '#111111' }}>{item.definition}</dd>
                 </div>
               ))}
             </div>

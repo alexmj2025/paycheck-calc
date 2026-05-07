@@ -29,7 +29,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is the 2026 standard deduction?',
-    a: 'The 2026 standard deduction is $16,100 for single filers, $32,200 for married filing jointly, and $24,150 for head of household. This amount is subtracted from your income before tax brackets are applied, reducing your taxable income.',
+    a: 'The 2026 standard deduction is $15,750 for single filers, $31,500 for married filing jointly, and $23,625 for head of household. This amount is subtracted from your income before tax brackets are applied, reducing your taxable income.',
   },
   {
     q: 'What is my marginal tax rate vs my effective tax rate?',
@@ -49,7 +49,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How does filing status affect my take-home pay?',
-    a: 'Married filing jointly gets a higher standard deduction ($32,200 vs $16,100 in 2026) and wider tax brackets than single filers, generally resulting in lower tax withholding per dollar of income. Head of household gets a deduction between the two ($24,150) and is available to unmarried individuals who pay more than half the cost of maintaining a home for a qualifying person.',
+    a: 'Married filing jointly gets a higher standard deduction ($31,500 vs $15,750 in 2026) and wider tax brackets than single filers, generally resulting in lower tax withholding per dollar of income. Head of household gets a deduction between the two ($23,625) and is available to unmarried individuals who pay more than half the cost of maintaining a home for a qualifying person.',
   },
   {
     q: 'What is a 401(k) and how does it reduce taxes?',
@@ -69,7 +69,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How do I calculate my own paycheck taxes manually?',
-    a: 'Annualize your gross pay, subtract pre-tax deductions and the 2026 standard deduction ($16,100 single) to get federal taxable income, apply the 2026 bracket table to find federal income tax, calculate Social Security (6.2%) and Medicare (1.45%) on gross wages, add state income tax, then divide all annual amounts by your pay periods per year.',
+    a: 'Annualize your gross pay, subtract pre-tax deductions and the 2026 standard deduction ($15,750 single) to get federal taxable income, apply the 2026 bracket table to find federal income tax, calculate Social Security (6.2%) and Medicare (1.45%) on gross wages, add state income tax, then divide all annual amounts by your pay periods per year.',
   },
   {
     q: 'Does overtime pay get taxed at a higher rate?',
@@ -119,7 +119,7 @@ export default function FAQPage() {
         <h1 className="text-2xl font-bold leading-tight sm:text-3xl mb-3" style={{ color: '#1C1917' }}>
           Paycheck Tax FAQ 2026
         </h1>
-        <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>
+        <p className="leading-relaxed" style={{ color: '#78716C' }}>
           Answers to the most common questions about paycheck withholding, federal and state taxes, and how to
           maximize your take-home pay — updated for 2026.
         </p>
@@ -129,7 +129,7 @@ export default function FAQPage() {
         {FAQS.map(({ q, a }, i) => (
           <div key={i} className="px-6 py-5" style={{ borderBottom: '1px solid #F0EDE7' }}>
             <h2 className="text-sm font-semibold mb-2" style={{ color: '#1C1917' }}>{q}</h2>
-            <p className="text-sm leading-relaxed" style={{ color: '#44403C' }}>{a}</p>
+            <p className="leading-relaxed" style={{ color: '#111111' }}>{a}</p>
           </div>
         ))}
       </div>

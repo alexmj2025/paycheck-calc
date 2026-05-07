@@ -19,7 +19,7 @@ export default function W4Article() {
           >
             US Taxes
           </span>
-          <span className="phase-label text-muted">April 28, 2026 · 8 min read</span>
+          <span className="phase-label text-muted">2026 · 8 min read</span>
         </div>
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl mb-4" style={{ color: '#1C1917' }}>
           How to Fill Out Your W-4 in 2026 (Step-by-Step)
@@ -31,7 +31,7 @@ export default function W4Article() {
         </p>
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+      <div className="space-y-8 leading-relaxed" style={{ color: '#111111' }}>
 
         <section className="overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
           <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #C17F3E' }}>
@@ -174,7 +174,7 @@ export default function W4Article() {
               <h3 className="font-semibold mb-1" style={{ color: '#1C1917' }}>4(b) — Deductions</h3>
               <p>
                 If you plan to itemize deductions and your total itemized deductions will exceed your standard
-                deduction ($16,100 single / $32,200 MFJ in 2026), you can enter the excess amount here.
+                deduction ($15,750 single / $31,500 MFJ in 2026), you can enter the excess amount here.
                 This reduces your withholding because you&rsquo;re telling your employer you&rsquo;ll have a larger
                 deduction than the standard amount. Most people skip this and simply take the standard
                 deduction at filing.
@@ -224,11 +224,11 @@ export default function W4Article() {
 
         {/* Quick reference box */}
         <div
-          className="rounded-xl px-6 py-5 text-sm leading-relaxed"
+          className="rounded-xl px-6 py-5 leading-relaxed"
           style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6' }}
         >
           <p className="font-semibold mb-2" style={{ color: '#1C1917' }}>W-4 Quick Reference: What Most People Do</p>
-          <ol className="list-decimal list-inside space-y-1.5" style={{ color: '#44403C' }}>
+          <ol className="list-decimal list-inside space-y-1.5" style={{ color: '#111111' }}>
             <li>Step 1: Enter your info and choose your filing status.</li>
             <li>Step 2: Check the box in 2(c) if you have multiple jobs or your spouse works.</li>
             <li>Step 3: Enter dependent credits only on your highest-paying job&rsquo;s W-4.</li>
@@ -255,7 +255,7 @@ export default function W4Article() {
                 key={l.href}
                 href={l.href}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
               >
                 {l.label}
               </a>

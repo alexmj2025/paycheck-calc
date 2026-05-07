@@ -36,7 +36,7 @@ export default function FaqAccordion({ items }: Props) {
               </span>
             </button>
             {isOpen && (
-              <div className="px-5 pb-4 text-sm leading-relaxed text-gray-700">
+              <div className="px-5 pb-4 leading-relaxed text-gray-700">
                 {item.a}
               </div>
             )}

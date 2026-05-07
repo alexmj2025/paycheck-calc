@@ -28,7 +28,7 @@ export default function AboutPage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #C17F3E' }}>
           <span className="phase-label" style={{ color: '#C17F3E' }}>Phase 1 · The Problem</span>
         </div>
-        <div className="px-8 py-7 space-y-4 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+        <div className="px-8 py-7 space-y-4 leading-relaxed" style={{ color: '#111111' }}>
           <h2 className="text-xl font-semibold" style={{ color: '#1C1917' }}>Why we built this</h2>
           <p>
             Gross salary numbers are everywhere — job listings, offer letters, LinkedIn. But the number that
@@ -53,14 +53,14 @@ export default function AboutPage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label" style={{ color: '#B5533C' }}>Phase 2 · The Methodology</span>
         </div>
-        <div className="px-8 py-7 space-y-6 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+        <div className="px-8 py-7 space-y-6 leading-relaxed" style={{ color: '#111111' }}>
           <h2 className="text-xl font-semibold" style={{ color: '#1C1917' }}>How our calculations work</h2>
 
           <div>
             <h3 className="font-semibold mb-2" style={{ color: '#1C1917' }}>United States</h3>
             <p>
               US calculations use the 2026 IRS tax brackets (sourced from IRS Revenue Procedure 2025-32),
-              the 2026 standard deductions ($16,100 single / $32,200 married filing jointly / $24,150 head
+              the 2026 standard deductions ($15,750 single / $31,500 married filing jointly / $23,625 head
               of household), and the 2026 Social Security wage base of $184,500. FICA taxes — Social
               Security at 6.2% and Medicare at 1.45% — are applied before income tax on gross wages.
               State income tax is computed using each state&rsquo;s published brackets and rates for 2026.
@@ -117,7 +117,7 @@ export default function AboutPage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #4A5F6E' }}>
           <span className="phase-label" style={{ color: '#4A5F6E' }}>Phase 3 · Privacy</span>
         </div>
-        <div className="px-8 py-7 space-y-4 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+        <div className="px-8 py-7 space-y-4 leading-relaxed" style={{ color: '#111111' }}>
           <h2 className="text-xl font-semibold" style={{ color: '#1C1917' }}>Your data stays with you</h2>
           <p>
             Every tax calculation on PaycheckTaxCalc runs entirely in your browser using JavaScript. When
@@ -138,7 +138,7 @@ export default function AboutPage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '1px solid #E2DDD6' }}>
           <span className="phase-label text-muted">Data Sources</span>
         </div>
-        <div className="px-8 py-7 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+        <div className="px-8 py-7 leading-relaxed" style={{ color: '#111111' }}>
           <ul className="space-y-2 list-disc list-inside">
             <li>IRS Revenue Procedure 2025-32 (2026 tax brackets and standard deductions)</li>
             <li>IRS Publication 15-T (federal income tax withholding tables)</li>
@@ -151,7 +151,7 @@ export default function AboutPage() {
             <li>Student Loans Company (repayment plan thresholds 2025/26)</li>
           </ul>
           <p className="mt-4 text-xs" style={{ color: '#A8A29E' }}>
-            Tax rates are reviewed and updated annually. Last update: April 2026.
+            Tax rates are reviewed and updated annually. Last update: 2026.
           </p>
         </div>
       </section>

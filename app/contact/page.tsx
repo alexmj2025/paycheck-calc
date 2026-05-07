@@ -26,7 +26,7 @@ export default function ContactPage() {
         <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label" style={{ color: '#B5533C' }}>Reach Us</span>
         </div>
-        <div className="px-8 py-8 space-y-6 text-sm" style={{ color: '#44403C' }}>
+        <div className="px-8 py-8 space-y-6" style={{ color: '#111111' }}>
 
           <div className="flex items-start gap-4">
             <div
@@ -104,7 +104,7 @@ export default function ContactPage() {
 
       {/* Response time note */}
       <div
-        className="mt-6 rounded-xl px-6 py-4 text-sm leading-relaxed"
+        className="mt-6 rounded-xl px-6 py-4 leading-relaxed"
         style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6', color: '#78716C' }}
       >
         <strong style={{ color: '#1C1917' }}>Response times:</strong> We aim to respond to all emails within

@@ -50,7 +50,7 @@ export default function UKRegionPage({ params }: Props) {
           {region.name} Paycheck Tax Calculator 2025/26
         </h1>
         {note && (
-          <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>{note}</p>
+          <p className="leading-relaxed" style={{ color: '#78716C' }}>{note}</p>
         )}
       </div>
 
@@ -63,7 +63,7 @@ export default function UKRegionPage({ params }: Props) {
         <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label text-phase2">{region.name} Tax Details</span>
         </div>
-        <div className="px-6 py-6 space-y-6 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+        <div className="px-6 py-6 space-y-6 leading-relaxed" style={{ color: '#111111' }}>
 
           <div>
             <h2 className="text-lg font-semibold mb-3" style={{ color: '#1C1917' }}>
@@ -95,7 +95,7 @@ export default function UKRegionPage({ params }: Props) {
                   ]).map(([band, range, rate]) => (
                     <tr key={band} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3" style={{ color: '#1C1917' }}>{band}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{range}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{range}</td>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
                     </tr>
                   ))}
@@ -132,7 +132,7 @@ export default function UKRegionPage({ params }: Props) {
               key={r.abbreviation}
               href={`/uk/${r.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {r.name} Calculator
             </a>

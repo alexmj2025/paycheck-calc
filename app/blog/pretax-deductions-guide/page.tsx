@@ -19,7 +19,7 @@ export default function PreTaxDeductionsArticle() {
           >
             Deductions
           </span>
-          <span className="phase-label text-muted">April 28, 2026 · 9 min read</span>
+          <span className="phase-label text-muted">2026 · 9 min read</span>
         </div>
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl mb-4" style={{ color: '#1C1917' }}>
           Pre-Tax Deductions Explained: 401(k), HSA, FSA & Health Insurance
@@ -32,7 +32,7 @@ export default function PreTaxDeductionsArticle() {
         </p>
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+      <div className="space-y-8 leading-relaxed" style={{ color: '#111111' }}>
 
         <section className="overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
           <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #5A7A52' }}>
@@ -216,11 +216,11 @@ export default function PreTaxDeductionsArticle() {
 
         {/* Quick tip */}
         <div
-          className="rounded-xl px-6 py-5 text-sm leading-relaxed"
+          className="rounded-xl px-6 py-5 leading-relaxed"
           style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6' }}
         >
           <p className="font-semibold mb-2" style={{ color: '#1C1917' }}>Model your deductions in the calculator</p>
-          <p style={{ color: '#44403C' }}>
+          <p style={{ color: '#111111' }}>
             Our <a href="/" className="underline" style={{ color: '#B5533C' }}>free paycheck calculator</a> lets
             you enter your 401(k), health insurance, HSA, and FSA contributions and see exactly how each one
             changes your take-home pay. It&rsquo;s the fastest way to answer &ldquo;should I increase my 401(k)
@@ -241,7 +241,7 @@ export default function PreTaxDeductionsArticle() {
                 key={l.href}
                 href={l.href}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
               >
                 {l.label}
               </a>

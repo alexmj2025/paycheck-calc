@@ -13,7 +13,7 @@ const ARTICLES = [
     title: 'How to Read Your Pay Stub: Every Line Explained',
     description:
       'Your pay stub contains more information than most people realize. We walk through every section — gross pay, deductions, YTD totals — so nothing is confusing.',
-    date: 'April 28, 2026',
+    date: '2026',
     readTime: '7 min read',
     tag: 'Basics',
   },
@@ -22,7 +22,7 @@ const ARTICLES = [
     title: 'How to Fill Out Your W-4 in 2026 (Step-by-Step)',
     description:
       'The W-4 form determines how much federal income tax is withheld from each paycheck. Getting it right means no surprise bill — and no unnecessarily large refund.',
-    date: 'April 28, 2026',
+    date: '2026',
     readTime: '8 min read',
     tag: 'US Taxes',
   },
@@ -31,7 +31,7 @@ const ARTICLES = [
     title: 'Effective Tax Rate vs. Marginal Tax Rate: What\'s the Difference?',
     description:
       'Saying "I\'m in the 22% bracket" does not mean you pay 22% on all your income. Understanding the difference between marginal and effective rates changes how you think about salary negotiations and raises.',
-    date: 'April 28, 2026',
+    date: '2026',
     readTime: '6 min read',
     tag: 'Tax Concepts',
   },
@@ -40,7 +40,7 @@ const ARTICLES = [
     title: 'Pre-Tax Deductions Explained: 401(k), HSA, FSA & Health Insurance',
     description:
       'Pre-tax deductions lower your taxable income before federal and state income taxes are calculated. Here is exactly how much each type saves you — with real numbers.',
-    date: 'April 28, 2026',
+    date: '2026',
     readTime: '9 min read',
     tag: 'Deductions',
   },
@@ -49,7 +49,7 @@ const ARTICLES = [
     title: 'FICA Tax Explained: Social Security & Medicare Withholding',
     description:
       'FICA is the one tax you pay regardless of your state, filing status, or deductions. Here is how Social Security and Medicare withholding actually works — including the wage base cap and the high-earner surtax.',
-    date: 'April 28, 2026',
+    date: '2026',
     readTime: '6 min read',
     tag: 'FICA',
   },
@@ -98,7 +98,7 @@ export default function BlogPage() {
               <h2 className="text-lg font-semibold leading-snug mb-2" style={{ color: '#1C1917' }}>
                 {article.title}
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#78716C' }}>
+              <p className="leading-relaxed" style={{ color: '#78716C' }}>
                 {article.description}
               </p>
               <p className="mt-4 text-sm font-medium" style={{ color: '#B5533C' }}>

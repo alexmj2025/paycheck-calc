@@ -42,7 +42,7 @@ function StepCell({
         <h3 className="text-lg font-bold" style={{ color: '#1C1917' }}>{title}</h3>
         <span className="text-5xl font-bold leading-none shrink-0" style={{ color: phaseColor, opacity: 0.25 }}>{num}</span>
       </div>
-      <div className="text-sm leading-relaxed" style={{ color: '#44403C' }}>
+      <div className="leading-relaxed" style={{ color: '#111111' }}>
         {children}
       </div>
     </div>
@@ -55,7 +55,7 @@ export default function HowItWorksPage() {
 
       {/* Hero */}
       <div className="text-center mb-16">
-        <p className="phase-label text-muted mb-3">Methodology · Updated April 2026</p>
+        <p className="phase-label text-muted mb-3">Methodology · Updated 2026</p>
         <h1 className="text-3xl font-bold leading-tight sm:text-5xl mb-4" style={{ color: '#1C1917' }}>
           Untangling the math<br />behind your paycheck.
         </h1>
@@ -75,9 +75,9 @@ export default function HowItWorksPage() {
               pay-period count: weekly × 52, bi-weekly × 26, semi-monthly × 24, monthly × 12, annually × 1.
             </p>
             <div className="mt-4 flex items-center gap-2 flex-wrap text-sm">
-              <span className="rounded-lg px-3 py-1.5 font-medium" style={{ border: '1px solid #E2DDD6', color: '#44403C' }}>$3,250</span>
+              <span className="rounded-lg px-3 py-1.5 font-medium" style={{ border: '1px solid #E2DDD6', color: '#111111' }}>$3,250</span>
               <span style={{ color: '#A8A29E' }}>×</span>
-              <span className="rounded-lg px-3 py-1.5 font-medium" style={{ border: '1px solid #E2DDD6', color: '#44403C' }}>Bi-weekly · 26</span>
+              <span className="rounded-lg px-3 py-1.5 font-medium" style={{ border: '1px solid #E2DDD6', color: '#111111' }}>Bi-weekly · 26</span>
               <span style={{ color: '#A8A29E' }}>=</span>
               <span className="rounded-lg px-3 py-1.5 font-semibold" style={{ border: '1px solid #E8D9C4', backgroundColor: '#FBF6EE', color: '#C17F3E' }}>$84,500</span>
             </div>
@@ -105,7 +105,7 @@ export default function HowItWorksPage() {
             <h3 className="text-lg font-bold" style={{ color: '#1C1917' }}>Federal income tax · 2026 brackets</h3>
             <span className="text-5xl font-bold leading-none shrink-0" style={{ color: '#B5533C', opacity: 0.25 }}>03</span>
           </div>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: '#44403C' }}>
+          <p className="leading-relaxed mb-5" style={{ color: '#111111' }}>
             We subtract the 2026 standard deduction from federal taxable wages to get{' '}
             <strong>federal taxable income</strong>, then apply the IRS progressive brackets.
             Income fills sequential tiers — each taxed at its own rate.
@@ -131,16 +131,16 @@ export default function HowItWorksPage() {
                 ].map(([rate, s, m, h]) => (
                   <tr key={rate} style={{ borderBottom: '1px solid #F0EDE7' }}>
                     <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
-                    <td className="px-4 py-3" style={{ color: '#44403C' }}>{s}</td>
-                    <td className="px-4 py-3" style={{ color: '#44403C' }}>{m}</td>
-                    <td className="px-4 py-3" style={{ color: '#44403C' }}>{h}</td>
+                    <td className="px-4 py-3" style={{ color: '#111111' }}>{s}</td>
+                    <td className="px-4 py-3" style={{ color: '#111111' }}>{m}</td>
+                    <td className="px-4 py-3" style={{ color: '#111111' }}>{h}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="mt-2 text-xs" style={{ color: '#A8A29E' }}>
-            Standard deductions: Single $16,100 · Married $32,200 · Head of household $24,150.
+            Standard deductions: Single $15,750 · Married $31,500 · Head of household $23,625.
             Source: IRS Rev. Proc. 2025-32.
           </p>
         </div>
@@ -171,7 +171,7 @@ export default function HowItWorksPage() {
                 <span className="text-xs" style={{ color: '#78716C' }}>No income tax:&nbsp;</span>
                 <span className="inline-flex flex-wrap gap-1 mt-1">
                   {NO_TAX_STATES.map(s => (
-                    <span key={s} className="rounded px-2 py-0.5 text-xs font-medium" style={{ border: '1px solid #E2DDD6', color: '#44403C' }}>{s}</span>
+                    <span key={s} className="rounded px-2 py-0.5 text-xs font-medium" style={{ border: '1px solid #E2DDD6', color: '#111111' }}>{s}</span>
                   ))}
                 </span>
               </div>
@@ -179,7 +179,7 @@ export default function HowItWorksPage() {
                 <span className="text-xs" style={{ color: '#78716C' }}>Flat rate:&nbsp;</span>
                 <span className="inline-flex flex-wrap gap-1 mt-1">
                   {FLAT_RATE_STATES.map(s => (
-                    <span key={s} className="rounded px-2 py-0.5 text-xs font-medium" style={{ border: '1px solid #E2DDD6', color: '#44403C' }}>{s}</span>
+                    <span key={s} className="rounded px-2 py-0.5 text-xs font-medium" style={{ border: '1px solid #E2DDD6', color: '#111111' }}>{s}</span>
                   ))}
                 </span>
               </div>
@@ -193,7 +193,7 @@ export default function HowItWorksPage() {
             <h3 className="text-lg font-bold" style={{ color: '#1C1917' }}>State-specific payroll taxes</h3>
             <span className="text-5xl font-bold leading-none shrink-0" style={{ color: '#B5533C', opacity: 0.25 }}>06</span>
           </div>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: '#44403C' }}>
+          <p className="leading-relaxed mb-5" style={{ color: '#111111' }}>
             Some states levy additional employee payroll taxes layered on top of state income tax.
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -229,7 +229,7 @@ export default function HowItWorksPage() {
                 { label: 'State income tax', sign: '−', bold: false },
                 { label: 'Pre/post-tax deductions', sign: '−', bold: false },
               ].map(({ label, sign }) => (
-                <div key={label} className="flex justify-between items-center px-4 py-2.5" style={{ borderBottom: '1px solid #F0EDE7', color: '#44403C' }}>
+                <div key={label} className="flex justify-between items-center px-4 py-2.5" style={{ borderBottom: '1px solid #F0EDE7', color: '#111111' }}>
                   <span>{label}</span>
                   <span className="font-medium" style={{ color: '#78716C' }}>{sign}</span>
                 </div>

@@ -41,7 +41,7 @@ export default function UKPage() {
               key={r.abbreviation}
               href={`/uk/${r.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {r.name}
             </a>
@@ -54,9 +54,9 @@ export default function UKPage() {
         <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label text-phase2">How UK Paycheck Taxes Work</span>
         </div>
-        <div className="px-6 py-6 space-y-8" style={{ color: '#44403C' }}>
+        <div className="px-6 py-6 space-y-8" style={{ color: '#111111' }}>
 
-          <div className="space-y-3 text-sm leading-relaxed">
+          <div className="space-y-3 leading-relaxed">
             <p>
               Every UK paycheck is subject to two main deductions: <strong>Income Tax</strong> and{' '}
               <strong>National Insurance (Class 1)</strong>. Student Loan repayments and pension
@@ -104,7 +104,7 @@ export default function UKPage() {
                   ].map(([band, range, rate]) => (
                     <tr key={band} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3" style={{ color: '#1C1917' }}>{band}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{range}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{range}</td>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
                     </tr>
                   ))}
@@ -140,7 +140,7 @@ export default function UKPage() {
                   ].map(([band, range, rate]) => (
                     <tr key={band} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3" style={{ color: '#1C1917' }}>{band}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{range}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{range}</td>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
                     </tr>
                   ))}
@@ -170,7 +170,7 @@ export default function UKPage() {
                     ['Above £50,270', '2%'],
                   ].map(([earnings, rate]) => (
                     <tr key={earnings} style={{ borderBottom: '1px solid #F0EDE7' }}>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{earnings}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{earnings}</td>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
                     </tr>
                   ))}

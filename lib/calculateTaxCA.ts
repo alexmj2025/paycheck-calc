@@ -119,8 +119,10 @@ export function calculateTaxCA(input: CATaxInput): TaxResult {
   if (provConfig.hasSurtax && provConfig.surtaxThresholds) {
     let surtax = 0;
     const t = provConfig.surtaxThresholds;
+    // Each tier applies independently on the full tax above its threshold
+    // CRA formula: Surtax = 20% × (tax − $5,315) + 36% × (tax − $6,802)
     if (annualProvincialTax > t[0].threshold) {
-      surtax += (Math.min(annualProvincialTax, t[1].threshold) - t[0].threshold) * t[0].rate;
+      surtax += (annualProvincialTax - t[0].threshold) * t[0].rate;
     }
     if (annualProvincialTax > t[1].threshold) {
       surtax += (annualProvincialTax - t[1].threshold) * t[1].rate;

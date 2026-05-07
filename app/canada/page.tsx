@@ -40,7 +40,7 @@ export default function CanadaPage() {
               key={p.abbreviation}
               href={`/canada/${p.slug}`}
               className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+              style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
             >
               {p.name}
             </a>
@@ -53,9 +53,9 @@ export default function CanadaPage() {
         <div className="px-6 pt-5 pb-4" style={{ borderBottom: '3px solid #B5533C' }}>
           <span className="phase-label text-phase2">How Canadian Paycheck Taxes Work</span>
         </div>
-        <div className="px-6 py-6 space-y-8" style={{ color: '#44403C' }}>
+        <div className="px-6 py-6 space-y-8" style={{ color: '#111111' }}>
 
-          <div className="space-y-3 text-sm leading-relaxed">
+          <div className="space-y-3 leading-relaxed">
             <p>
               Every Canadian paycheck is subject to four main deductions. <strong>Federal income tax</strong> uses
               progressive brackets ranging from 15% to 33% in 2026. The federal Basic Personal Amount (BPA) of
@@ -99,7 +99,7 @@ export default function CanadaPage() {
                   ].map(([rate, range]) => (
                     <tr key={rate} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#B5533C' }}>{rate}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{range}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{range}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -132,9 +132,9 @@ export default function CanadaPage() {
                   ].map(([name, rate, max, contrib]) => (
                     <tr key={name} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-medium" style={{ color: '#1C1917' }}>{name}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{rate}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{max}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{contrib}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{rate}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{max}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{contrib}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -19,7 +19,7 @@ export default function FICAArticle() {
           >
             FICA
           </span>
-          <span className="phase-label text-muted">April 28, 2026 · 6 min read</span>
+          <span className="phase-label text-muted">2026 · 6 min read</span>
         </div>
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl mb-4" style={{ color: '#1C1917' }}>
           FICA Tax Explained: Social Security &amp; Medicare Withholding
@@ -31,7 +31,7 @@ export default function FICAArticle() {
         </p>
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed" style={{ color: '#44403C' }}>
+      <div className="space-y-8 leading-relaxed" style={{ color: '#111111' }}>
 
         <section className="overflow-hidden rounded-2xl bg-white" style={{ border: '1px solid #E2DDD6' }}>
           <div className="px-8 pt-6 pb-4" style={{ borderBottom: '3px solid #7B5EA7' }}>
@@ -120,8 +120,8 @@ export default function FICAArticle() {
                     <tr key={tax} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-medium" style={{ color: '#1C1917' }}>{tax}</td>
                       <td className="px-4 py-3 font-semibold" style={{ color: '#7B5EA7' }}>{rate}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{limit}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{max}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{limit}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{max}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -193,8 +193,8 @@ export default function FICAArticle() {
                   ].map(([feature, income, fica]) => (
                     <tr key={feature} style={{ borderBottom: '1px solid #F0EDE7' }}>
                       <td className="px-4 py-3 font-medium" style={{ color: '#1C1917' }}>{feature}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{income}</td>
-                      <td className="px-4 py-3" style={{ color: '#44403C' }}>{fica}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{income}</td>
+                      <td className="px-4 py-3" style={{ color: '#111111' }}>{fica}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -210,11 +210,11 @@ export default function FICAArticle() {
 
         {/* Quick tip */}
         <div
-          className="rounded-xl px-6 py-5 text-sm leading-relaxed"
+          className="rounded-xl px-6 py-5 leading-relaxed"
           style={{ backgroundColor: '#F5F2ED', border: '1px solid #E2DDD6' }}
         >
           <p className="font-semibold mb-2" style={{ color: '#1C1917' }}>See your exact FICA breakdown</p>
-          <p style={{ color: '#44403C' }}>
+          <p style={{ color: '#111111' }}>
             Our <a href="/" className="underline" style={{ color: '#B5533C' }}>paycheck calculator</a> shows
             your Social Security and Medicare withholding separately from your income taxes. You can also see
             exactly how health insurance premiums or HSA contributions reduce your FICA bill — enter them in
@@ -235,7 +235,7 @@ export default function FICAArticle() {
                 key={l.href}
                 href={l.href}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#44403C' }}
+                style={{ border: '1px solid #E2DDD6', backgroundColor: '#FFFFFF', color: '#111111' }}
               >
                 {l.label}
               </a>
